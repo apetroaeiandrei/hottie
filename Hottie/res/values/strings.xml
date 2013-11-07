@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hottie</string>
+    <string name="action_settings">Settings</string>
+    <string name="preference_file_key">olectronix.hottie.preferences</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="title_activity_config">Configure Device</string>
+    <string name="title_activity_register_phone">Register Phone Number</string>
+    <string name="request_PIN">Please insert the unique PIN number of your Hottie device</string>
+    <string name="request_number">Currently registered numbers are:</string>
+	<string name="pin">PIN code</string>
+	<string name="button_on">ON</string>
+    <string name="button_off">OFF</string>
+    <string name="button_report">Report</string>
+    <string name="button_config">Configure Device</string>
+    <string name="button_advanced">Advanced Commands</string>
+	<string name="button_save_phone_numbers">Save Numbers</string>
+	<string name="button_next">Next</string>
+	<string name="button_on_off">State</string>
+	<string name="button_set">Go</string>
+	<string name="button_save_settings">Save Settings</string>
+	<string name="seconds">Seconds</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="registerPhoneText">Register phone</string>
+    <string name="setTimeText">Set time</string>
+    <string name="setHeaterIgnText">Ignition dependency</string>
+    <string name="setOutputsText">Configure outputs</string>
+    <string name="setDefOnTimeText">Default ON Time</string>
+    <string name="setIgnUpdateText">Ignition detection time</string>
+    <string name="setLightTimeoutText">Light timeout notification</string>
+    <string name="setWttErrorNoteText">Error notification (WTT)</string>
+    <string name="setComErrorNoteText">Error notification (Com)</string>
+    <string name="setLedText">Led status</string>
+    <string name="setTypeText">Heater Type</string>
+    <string name="setDefaultText">Reset to default settings</string>
+    <string name="saveSettingsText">Save settings —></string>
+</resources>

@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".RegisterPhoneActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/request_PIN" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/pin_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="6"
+            android:hint="@string/pin"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="pinConfirmationClick"
+            android:text="@string/button_next" />
+    </LinearLayout>
+
+<!-- Linear layout to insert a little space. To be revised -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="20dp" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

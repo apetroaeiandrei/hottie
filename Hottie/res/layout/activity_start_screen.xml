@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".StartScreen" >
+    
+<LinearLayout
+    android:id="@+id/on_off_layout"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+    <Button
+        android:id="@+id/on_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="3dp"
+        android:onClick="onOnButtonClick"
+        android:text="@string/button_on" />
+    <Button
+        android:id="@+id/off_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="3dp"
+        android:onClick="onOffButtonClick"
+        android:text="@string/button_off" />
+</LinearLayout>
+    
+    <Button
+        android:id="@+id/report_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="3dp"
+        android:text="@string/button_report"
+        android:onClick="onReportButtonClick" />
+    
+ <LinearLayout
+    android:id="@+id/config_layout"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+     <Button
+        android:id="@+id/config_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="3dp"
+        android:onClick="onConfigButtonClick"
+        android:text="@string/button_config" />
+    <Button
+        android:id="@+id/advanced_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="3dp"
+        android:text="@string/button_advanced" />
+</LinearLayout>
+<LinearLayout
+    android:id="@+id/temporary_layout"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal" >   
+     <EditText
+        android:id="@+id/remote_phone_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="3dp"
+        />
+    <Button
+        android:id="@+id/save_number_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="3dp"
+        android:onClick="saveNumber"
+        android:text="SAVE NUMBER" />
+</LinearLayout>
+</LinearLayout>
