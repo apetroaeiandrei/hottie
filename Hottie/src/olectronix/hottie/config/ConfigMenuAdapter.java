@@ -6,6 +6,9 @@ import java.util.Calendar;
 
 import olectronix.hottie.R;
 import olectronix.hottie.SMSHandler;
+import olectronix.hottie.R.string;
+import android.R.bool;
+import android.R.integer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -22,7 +25,6 @@ public class ConfigMenuAdapter extends BaseAdapter {
 	private static ArrayList<ConfigMenuItem> menusArrayList;
 	private LayoutInflater mInflater;
 	private Context currentContext;
-	private ViewHolder holder;
 
 	public ConfigMenuAdapter(Context context, ArrayList<ConfigMenuItem> menus) {
 		currentContext = context;
@@ -48,11 +50,12 @@ public class ConfigMenuAdapter extends BaseAdapter {
 	@SuppressLint("NewApi")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		ConfigMenuItem holder = new ConfigMenuItem();
 
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.config_row_template, null);
-			holder = new ViewHolder();
-			holder.text = (TextView) convertView
+
+			holder.textView = (TextView) convertView
 					.findViewById(R.id.config_line_textView);
 			holder.switch1 = (Switch) convertView.findViewById(R.id.switch1);
 			holder.seek_bar1 = (SeekBar) convertView
@@ -62,31 +65,152 @@ public class ConfigMenuAdapter extends BaseAdapter {
 			seek_bar_valueTextView.setText(holder.seek_bar1.getProgress()
 					+ "(s)");
 			holder.seek_bar_valueTextView = seek_bar_valueTextView;
-			holder.button_set_time = (Button) convertView
+			holder.button_go = (Button) convertView
 					.findViewById(R.id.button_set);
-			holder.button_set_time
-					.setOnClickListener(new Button.OnClickListener() {
-						public void onClick(View v) {
-								SMSHandler handler = new SMSHandler(
-										currentContext);
-								Calendar c = Calendar.getInstance();
-								SimpleDateFormat format1 = new SimpleDateFormat(
-										"dd-MM-yy");
-								SimpleDateFormat format2 = new SimpleDateFormat(
-										"hh:mm:ss");
-								String date = format1.format(c.getTime());
-								String time = format2.format(c.getTime());
-								String command = String
+			final ConfigMenuItem holderFinal = holder;
+			holder.button_go.setOnClickListener(new Button.OnClickListener() {
+				public void onClick(View v) {
+					if (holderFinal.textView
+							.getText()
+							.toString()
+							.equals(currentContext.getResources().getString(
+									R.string.setTimeText))) {
+						SMSHandler handler = new SMSHandler(currentContext);
+						Calendar c = Calendar.getInstance();
+						SimpleDateFormat format1 = new SimpleDateFormat(
+								"dd-MM-yy");
+						SimpleDateFormat format2 = new SimpleDateFormat(
+								"hh:mm:ss");
+						String date = format1.format(c.getTime());
+						String time = format2.format(c.getTime());
+						String command = String.format(
+								currentContext.getResources().getString(
+										R.string.setTimeCommand), time,
+								c.get(Calendar.DAY_OF_WEEK), date);
+						handler.sendSMS(command);
+					}
+					if (holderFinal.textView
+							.getText()
+							.toString()
+							.equals(currentContext.getResources().getString(
+									R.string.setDefaultText))) {
+						SMSHandler handler = new SMSHandler(currentContext);
+						String command = currentContext.getResources()
+								.getString(R.string.setDefaultCommand);
+						handler.sendSMS(command);
+					}
+					if (holderFinal.textView
+							.getText()
+							.toString()
+							.equals(currentContext.getResources().getString(
+									R.string.saveSettingsText))) {
+						SMSHandler handler = new SMSHandler(currentContext);
+						String command = "";
+						for (ConfigMenuItem item : menusArrayList) {
+							// Ignition Detection Time command
+							if (item.textView
+									.getText()
+									.toString()
+									.equals(currentContext.getResources()
+											.getString(
+													R.string.setIgnUpdateText))) {
+								command = String
 										.format(currentContext
 												.getResources()
 												.getString(
-														R.string.setTimeCommand),
-												time,
-												c.get(Calendar.DAY_OF_WEEK),
-												date);
+														R.string.setIgnUpdateCommand),
+												item.seek_bar1.getProgress());
 								handler.sendSMS(command);
+							}
+
+							// Light Timeout command
+							if (item.textView
+									.getText()
+									.toString()
+									.equals(currentContext
+											.getResources()
+											.getString(
+													R.string.setLightTimeoutText))) {
+								command = String
+										.format(currentContext
+												.getResources()
+												.getString(
+														R.string.setLightTimeoutCommand),
+												item.seek_bar1.getProgress());
+								handler.sendSMS(command);
+							}
+							// Error notification (WTT)
+							if (item.textView
+									.getText()
+									.toString()
+									.equals(currentContext
+											.getResources()
+											.getString(
+													R.string.setWttErrorNoteText))) {
+								int state;
+								if (item.switch1.isChecked())
+									state = 1;
+								else
+									state = 0;
+
+								command = String
+										.format(currentContext
+												.getResources()
+												.getString(
+														R.string.setWttErrorNoteCommand),
+												state);
+								handler.sendSMS(command);
+							}
+							// Error notification (COM)
+							if (item.textView
+									.getText()
+									.toString()
+									.equals(currentContext
+											.getResources()
+											.getString(
+													R.string.setComErrorNoteText))) {
+								int state;
+								if (item.switch1.isChecked())
+									state = 1;
+								else
+									state = 0;
+
+								command = String
+										.format(currentContext
+												.getResources()
+												.getString(
+														R.string.setComErrorNoteCommand),
+												state);
+								handler.sendSMS(command);
+							}
+							
+							// Error notification (LED)
+							if (item.textView
+									.getText()
+									.toString()
+									.equals(currentContext
+											.getResources()
+											.getString(
+													R.string.setLedText))) {
+								int state;
+								if (item.switch1.isChecked())
+									state = 1;
+								else
+									state = 0;
+
+								command = String
+										.format(currentContext
+												.getResources()
+												.getString(
+														R.string.setLedCommand),
+												state);
+								handler.sendSMS(command);
+							}
+
 						}
-					});
+					}
+				}
+			});
 			holder.seek_bar1
 					.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 						@Override
@@ -109,27 +233,27 @@ public class ConfigMenuAdapter extends BaseAdapter {
 
 			convertView.setTag(holder);
 		} else {
-			holder = (ViewHolder) convertView.getTag();
+			holder = (ConfigMenuItem) convertView.getTag();
 		}
 
-		holder.text.setText(menusArrayList.get(position).getText());
+		holder.textView.setText(menusArrayList.get(position).getText());
 		holder.switch1.setVisibility(menusArrayList.get(position)
-				.getSwitchVisibility());
-		holder.button_set_time.setVisibility(menusArrayList.get(position)
-				.getButton_sync_time_visibility());
+				.getSwitch_visibility());
+		holder.button_go.setVisibility(menusArrayList.get(position)
+				.getButton_go_visibility());
 		holder.seek_bar1.setVisibility(menusArrayList.get(position)
 				.getSeek_bar_visibility());
 		holder.seek_bar_valueTextView.setVisibility(menusArrayList
 				.get(position).getSeek_bar_visibility());
 
-		return convertView;
-	}
+		for (ConfigMenuItem item : menusArrayList) {
+			String itemText = item.getText().toString();
+			String holderText = holder.textView.getText().toString();
+			if (itemText.equals(holderText)) {
+				item.assignObject(holder);
+			}
 
-	static class ViewHolder {
-		TextView text;
-		Switch switch1;
-		Button button_set_time;
-		SeekBar seek_bar1;
-		TextView seek_bar_valueTextView;
+		}
+		return convertView;
 	}
 }

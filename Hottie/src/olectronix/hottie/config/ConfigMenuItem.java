@@ -1,13 +1,32 @@
 package olectronix.hottie.config;
 
+import android.annotation.SuppressLint;
 import android.view.View;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class ConfigMenuItem {
 	private String text = "";
-	private Boolean onOff = false;
-	private int button_sync_time_visibility = View.GONE;
+	private int button_go_visibility = View.GONE;
 	private int switch_visibility=View.GONE;
 	private int seek_bar_visibility=View.GONE;
+	
+	public TextView textView;
+	public Switch switch1;
+	public Button button_go;
+	public SeekBar seek_bar1;
+	public TextView seek_bar_valueTextView;
+	
+	public void assignObject(ConfigMenuItem holder)
+	{
+		this.textView =holder.textView;
+		this.button_go =holder.button_go;
+		this.seek_bar1=holder.seek_bar1;
+		this.switch1=holder.switch1;
+		this.seek_bar_valueTextView=holder.seek_bar_valueTextView;
+	}
 
 	public String getText() {
 		return text;
@@ -17,28 +36,20 @@ public class ConfigMenuItem {
 		this.text = text;
 	}
 
-	public Boolean getOnOff() {
-		return onOff;
+	public int getButton_go_visibility() {
+		return button_go_visibility;
 	}
 
-	public void setOnOff(Boolean onOff) {
-		this.onOff = onOff;
+	public void setButton_go_visibility(int button_go_visibility) {
+		this.button_go_visibility = button_go_visibility;
 	}
 
-	public int getSwitchVisibility() {
+	public int getSwitch_visibility() {
 		return switch_visibility;
 	}
 
-	public void setSwitchVisibility(int visibility) {
-		this.switch_visibility = visibility;
-	}
-
-	public int getButton_sync_time_visibility() {
-		return button_sync_time_visibility;
-	}
-
-	public void setButton_sync_time_visibility(int button_sync_time_visibility) {
-		this.button_sync_time_visibility = button_sync_time_visibility;
+	public void setSwitch_visibility(int switch_visibility) {
+		this.switch_visibility = switch_visibility;
 	}
 
 	public int getSeek_bar_visibility() {

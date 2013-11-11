@@ -8,7 +8,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ClipData.Item;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -17,10 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+@SuppressLint("NewApi")
 public class ConfigActivity extends Activity {
 
 	// This is the Adapter being used to display the list's data
@@ -84,7 +83,7 @@ public class ConfigActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				ConfigMenuItem selectedItem =(ConfigMenuItem) (lv.getItemAtPosition(position));
-				String selectedFromList = selectedItem.getText();
+				String selectedFromList = selectedItem.textView.getText().toString();
 
 				if (selectedFromList.equals(getResources().getString(
 						R.string.registerPhoneText))) {
@@ -104,62 +103,54 @@ public class ConfigActivity extends Activity {
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setHeaterIgnText));
-		configMenuItem.setSwitchVisibility(View.GONE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setOutputsText));
-		configMenuItem.setSwitchVisibility(View.GONE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setTypeText));
-		configMenuItem.setSwitchVisibility(View.GONE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setIgnUpdateText));
-		configMenuItem.setSwitchVisibility(View.GONE);
 		configMenuItem.setSeek_bar_visibility(View.VISIBLE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setLightTimeoutText));
-		configMenuItem.setSwitchVisibility(View.GONE);
 		configMenuItem.setSeek_bar_visibility(View.VISIBLE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setWttErrorNoteText));
-		configMenuItem.setSwitchVisibility(View.VISIBLE);
+		configMenuItem.setSwitch_visibility(View.VISIBLE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setComErrorNoteText));
-		configMenuItem.setSwitchVisibility(View.VISIBLE);
+		configMenuItem.setSwitch_visibility(View.VISIBLE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setLedText));
-		configMenuItem.setSwitchVisibility(View.VISIBLE);
+		configMenuItem.setSwitch_visibility(View.VISIBLE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setTimeText));
-		configMenuItem.setSwitchVisibility(View.GONE);
-		configMenuItem.setButton_sync_time_visibility(View.VISIBLE);
+		configMenuItem.setButton_go_visibility(View.VISIBLE);
 		result.add(configMenuItem);
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.setDefaultText));
-		configMenuItem.setSwitchVisibility(View.GONE);
-		configMenuItem.setButton_sync_time_visibility(View.VISIBLE);
+		configMenuItem.setButton_go_visibility(View.VISIBLE);
 		result.add(configMenuItem);	
 		
 		configMenuItem = new ConfigMenuItem();
 		configMenuItem.setText(getResources().getString(R.string.saveSettingsText));
-		configMenuItem.setSwitchVisibility(View.GONE);
-		configMenuItem.setButton_sync_time_visibility(View.VISIBLE);
+		configMenuItem.setButton_go_visibility(View.VISIBLE);
 		result.add(configMenuItem);	
 		return result;
 	}
