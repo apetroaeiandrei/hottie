@@ -13,4 +13,22 @@
     <string name="setTypeText">Heater Type</string>
     <string name="setDefaultText">Reset to default settings</string>
     <string name="saveSettingsText">Save settings —></string>
+    <string name="heaterignModeOFFText">OFF when ingnition ON</string>
+    <string name="heaterignModeONText">ON when ingnition ON</string>
+    <string name="heaterignModeIndependentText">Independent</string>
+    <string name="heaterignModeSensorText">Sensor Dependent</string>
+    <string name="heater_ignition_mode_text">Ignition mode:</string>
+    <string name="heaterign_sensor_selection_text">Sensor to depend on:</string>
+    <string name="sensor_WTT_temperature_sensor">WTT temperature sensor </string>
+    <string name="sensor_exterior_temperature_sensor">Exterior temperature sensor</string>
+    <string name="sensor_interior_temperature_sensor ">Interior temperature sensor</string>
+    <string name="sensor_HOTTIE_system_temperature_sensor ">HOTTIE system temperature sensor</string>
+    <string name="heaterign_modeOFF_note">The heater will always be turned off when the ignition key is switched on and cannot be turned back on until the ignition key is switched off.</string>
+    <string name="heaterign_modeON_note">The heater will always turn on when the ignition key is switched on. The heater CAN be turned off by pressing the Button, phone call, by sending the OFF command or switching off the ignition. </string>
+    <string name="heaterign_modeSensor_note">The heater will be turned on (for the default duration) if the measured temperature is below the turn on threshold. It will run until the measured temperature is higher than the turn off, it is turned off by pressing the Button, phone call, by sending the OFF command or switching off the ignition or the operating time is exceeded.</string>
+    <string name="heaterign_modeIndependent_note">The heater operation is independent of the ignition key status.</string>
+    <string name="heaterign_temp_tresholds_note">"WARNING: Temperature tresholds must be between -50 and 100 and LowTH smaller than HighTH"</string>
+    <string name="heaterign_temp_tresholds_text">Temperature tresholds (low, high)</string>
+    <string name="high_treshold_hint">High</string>
+    <string name="low_treshold_hint">Low</string>
 </resources>

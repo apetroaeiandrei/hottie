@@ -16,4 +16,6 @@
     <string name="setWttErrorNoteCommand">WTTERRNOTE:%1$S</string>
     <string name="setComErrorNoteCommand">COMERRNOTE:%1$s</string>
     <string name="setLedCommand">LED:%1$s</string>
+    <string name="setHeaterignMode">HEATERIGN:%1$s</string>
+    <string name="setHeaterignModeSensor">HEATERIGN:%1$s,%2$s,%3$s,%4$s</string>
 </resources>

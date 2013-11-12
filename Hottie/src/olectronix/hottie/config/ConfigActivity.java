@@ -91,6 +91,12 @@ public class ConfigActivity extends Activity {
 							RegisterPhoneActivity.class);
 					startActivity(intent);
 				}
+					if (selectedFromList.equals(getResources().getString(
+							R.string.setHeaterIgnText))) {
+						Intent intent = new Intent(context,
+								HeaterIgnitionActivity.class);
+						startActivity(intent);
+				}
 			}
 		});
 	}

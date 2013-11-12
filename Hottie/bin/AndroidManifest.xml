@@ -39,17 +39,25 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="olectronix.hottie.ConfigActivity" />
         </activity>
-<!--          <receiver android:name=".SMSReceiver">  -->
-<!--             <intent-filter>  -->
-<!--                 <action android:name= -->
-<!--                     "android.provider.Telephony.SMS_RECEIVED" />  -->
-<!--             </intent-filter>  -->
-<!--         </receiver> -->
+        <!-- <receiver android:name=".SMSReceiver"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name= -->
+        <!-- "android.provider.Telephony.SMS_RECEIVED" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+        <activity
+            android:name="olectronix.hottie.config.HeaterIgnitionActivity"
+            android:label="@string/title_activity_heater_ignition"
+            android:parentActivityName="olectronix.hottie.config.ConfigActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="olectronix.hottie.config.ConfigActivity" />
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
 </manifest>
