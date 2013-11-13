@@ -53,6 +53,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="olectronix.hottie.config.ConfigActivity" />
         </activity>
+        <activity
+            android:name="olectronix.hottie.config.HeaterTypeActivity"
+            android:label="@string/title_activity_heater_type"
+            android:parentActivityName="olectronix.hottie.config.ConfigActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="olectronix.hottie.config.ConfigActivity" />
+        </activity>
+        <activity
+            android:name="olectronix.hottie.config.ConfigureOutputsActivity"
+            android:label="@string/title_activity_configure_outputs"
+            android:parentActivityName="olectronix.hottie.config.ConfigActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="olectronix.hottie.config.ConfigActivity" />
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.SEND_SMS" />

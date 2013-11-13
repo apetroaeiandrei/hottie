@@ -18,4 +18,5 @@
     <string name="setLedCommand">LED:%1$s</string>
     <string name="setHeaterignMode">HEATERIGN:%1$s</string>
     <string name="setHeaterignModeSensor">HEATERIGN:%1$s,%2$s,%3$s,%4$s</string>
+    <string name="setHeaterType">TYPE:%1$s</string>
 </resources>

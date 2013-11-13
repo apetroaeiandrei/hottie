@@ -97,6 +97,12 @@ public class ConfigActivity extends Activity {
 								HeaterIgnitionActivity.class);
 						startActivity(intent);
 				}
+					if (selectedFromList.equals(getResources().getString(
+							R.string.setTypeText))) {
+						Intent intent = new Intent(context,
+								HeaterTypeActivity.class);
+						startActivity(intent);
+				}
 			}
 		});
 	}

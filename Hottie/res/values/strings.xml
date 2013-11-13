@@ -22,5 +22,7 @@
     <string name="button_save_settings">Save Settings</string>
     <string name="seconds">Seconds</string>
     <string name="title_activity_heater_ignition">Heater Ignition Dependency</string>
+    <string name="title_activity_heater_type">HeaterTypeActivity</string>
+    <string name="title_activity_configure_outputs">ConfigureOutputsActivity</string>
 
 </resources>

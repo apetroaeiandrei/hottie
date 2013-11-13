@@ -31,4 +31,17 @@
     <string name="heaterign_temp_tresholds_text">Temperature tresholds (low, high)</string>
     <string name="high_treshold_hint">High</string>
     <string name="low_treshold_hint">Low</string>
+    
+    <!-- Please don't change the order of the following array -->
+    <string-array name="heater_types_array">
+        <item>W-Bus Compatible (TT V)</item>
+        <item>TT C/E – after market</item>
+        <item>TT C/Z – BMW </item>
+        <item>TT C/Z – FIAT</item>
+        <item>TT C/Z – PSA </item>
+        <item>TT C/Z – Rover</item>
+        <item>T 90</item>
+        <item>T 90S</item>
+        <item>TT 98</item>
+    </string-array>
 </resources>
