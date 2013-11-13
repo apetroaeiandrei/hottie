@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -25,6 +26,20 @@ public class StartScreen extends Activity {
 		getMenuInflater().inflate(R.menu.start_screen, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_settings:
+	        	Intent intent = new Intent(this, UserSettingsActivity.class);
+	    		startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
 	public void onReportButtonClick(View view)
 	{
 		String message=getResources().getString(R.string.reportCommand);
@@ -47,14 +62,5 @@ public class StartScreen extends Activity {
 	{
 		Intent intent = new Intent(this, ConfigActivity.class);
 		startActivity(intent);
-	}
-	
-	public void saveNumber(View view)
-	{
-		String  phoneNumber =((EditText)findViewById(R.id.remote_phone_no)).getText().toString();
-		SharedPreferences sharedPref = this.getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = sharedPref.edit();
-		editor.putString("remote_phone_no", phoneNumber);
-		editor.commit();
 	}
 }

@@ -68,29 +68,4 @@
         android:padding="3dp"
         android:text="@string/button_advanced" />
 </LinearLayout>
-<LinearLayout
-    android:id="@+id/temporary_layout"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:orientation="horizontal" >   
-     <EditText
-        android:id="@+id/remote_phone_no"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:inputType="phone"
-        android:padding="3dp"
-        />
-    <Button
-        android:id="@+id/save_number_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:padding="3dp"
-        android:onClick="saveNumber"
-        android:text="SAVE NUMBER" />
-</LinearLayout>
 </LinearLayout>

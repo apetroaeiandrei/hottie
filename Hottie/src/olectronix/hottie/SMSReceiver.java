@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.telephony.SmsMessage;
 
 public class SMSReceiver extends BroadcastReceiver {
@@ -27,9 +28,9 @@ public class SMSReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		SharedPreferences sharedPref = context.getSharedPreferences("myPrefs",
-				Context.MODE_PRIVATE);
-		String remotePhone = sharedPref.getString("remote_phone_no", "000");
+	
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+		String remotePhone = sharedPref.getString("remote_phone_no","0000");
 
 		// ---get the SMS message passed in---
 		Bundle bundle = intent.getExtras();

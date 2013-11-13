@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
@@ -27,8 +28,9 @@ public class SMSHandler extends Activity {
 	//---sends an SMS message to another device---
     public void sendSMS(String message)
     {        
-    	SharedPreferences sharedPref = parentActivity.getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
-		remotePhone = sharedPref.getString("remote_phone_no", "000");
+
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(parentActivity);
+		String remotePhone = sharedPref.getString("remote_phone_no","0000");
 		
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";

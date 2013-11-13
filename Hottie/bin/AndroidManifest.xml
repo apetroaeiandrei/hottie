@@ -69,6 +69,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="olectronix.hottie.config.ConfigActivity" />
         </activity>
+        <activity
+            android:name="olectronix.hottie.UserSettingsActivity"
+            android:label="@string/title_activity_user_settings" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.SEND_SMS" />
