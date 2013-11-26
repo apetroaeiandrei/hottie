@@ -3,6 +3,7 @@ package olectronix.hottie.config;
 import java.util.ArrayList;
 
 import olectronix.hottie.R;
+import olectronix.hottie.SMSHandler;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class ConfigOutputsAdapter extends BaseAdapter {
@@ -41,9 +43,36 @@ public class ConfigOutputsAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ConfigOutputsItem holder = new ConfigOutputsItem();
+		Button onButton;
+		Button offButton;
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.output_setup_row_template, null);
 			holder.nameTextView =(TextView) convertView.findViewById(R.id.output_name_text_view);
+			onButton=(Button) convertView.findViewById(R.id.output_on_button);
+			offButton=(Button) convertView.findViewById(R.id.output_off_button);
+			final ConfigOutputsItem holderFinal = holder;
+			
+			
+			onButton.setOnClickListener(new Button.OnClickListener() {
+				SMSHandler handler=new SMSHandler(currentContext);
+				public void onClick(View v) {
+					String name=holderFinal.nameTextView
+							.getText()
+							.toString();
+					String command = String.format(currentContext.
+							getResources().getString(R.string.outputOnCommand), name);
+					handler.sendSMS(command);
+				}});
+			offButton.setOnClickListener(new Button.OnClickListener() {
+				SMSHandler handler=new SMSHandler(currentContext);
+				public void onClick(View v) {
+					String name=holderFinal.nameTextView
+							.getText()
+							.toString();
+					String command = String.format(currentContext.
+							getResources().getString(R.string.outputOffCommand), name);
+					handler.sendSMS(command);
+				}});
 			
 		} else {
 			holder = (ConfigOutputsItem) convertView.getTag();

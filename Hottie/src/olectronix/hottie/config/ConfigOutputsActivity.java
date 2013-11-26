@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import olectronix.hottie.R;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
-public class ConfigureOutputsActivity extends Activity {
+public class ConfigOutputsActivity extends Activity {
 ListView lv;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +65,27 @@ ListView lv;
 		return super.onOptionsItemSelected(item);
 	}
 	private ArrayList<ConfigOutputsItem> populateConfigMenu(){
+		//Check if hottie device is able to respond via SMS
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		boolean responseEnabled = sharedPref.getBoolean("hottie_credit_checkbox", false);
+		
+		//ArrayList used to populate the ListView with outputs
 		ArrayList<ConfigOutputsItem> result = new ArrayList<ConfigOutputsItem>();
+		
+		if (!responseEnabled){
 		ConfigOutputsItem configOutputsItem = new ConfigOutputsItem();
-		configOutputsItem.setOutputName(getResources().getString(R.string.registerPhoneText));
+		configOutputsItem.setOutputName(getResources().getString(R.string.default_output_5));
 		result.add(configOutputsItem);
 		
+		configOutputsItem = new ConfigOutputsItem();
+		configOutputsItem.setOutputName(getResources().getString(R.string.default_output_6));
+		result.add(configOutputsItem);
+		}
+		else {
+			 Toast.makeText(this, "Not implemented yet", 
+                     Toast.LENGTH_SHORT).show();
+			new UnsupportedOperationException("Not implemented yet");
+		}
 		return result;
 	}
 

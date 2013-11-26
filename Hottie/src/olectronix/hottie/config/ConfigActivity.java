@@ -106,7 +106,7 @@ public class ConfigActivity extends Activity {
 					if (selectedFromList.equals(getResources().getString(
 							R.string.setOutputsText))) {
 						Intent intent = new Intent(context,
-								ConfigureOutputsActivity.class);
+								ConfigOutputsActivity.class);
 						startActivity(intent);
 				}
 			}

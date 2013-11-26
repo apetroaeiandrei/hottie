@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 public class SMSHandler extends Activity {
 	private Context parentActivity;
-	private String remotePhone;
 	public SMSHandler(Context activity) {
 		// TODO Auto-generated constructor stub
 		parentActivity=activity;

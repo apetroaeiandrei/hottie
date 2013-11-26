@@ -62,7 +62,7 @@
                 android:value="olectronix.hottie.config.ConfigActivity" />
         </activity>
         <activity
-            android:name="olectronix.hottie.config.ConfigureOutputsActivity"
+            android:name="olectronix.hottie.config.ConfigOutputsActivity"
             android:label="@string/title_activity_configure_outputs"
             android:parentActivityName="olectronix.hottie.config.ConfigActivity" >
             <meta-data
