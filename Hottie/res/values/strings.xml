@@ -3,6 +3,7 @@
 
     <string name="app_name">Hottie</string>
     <string name="action_settings">Settings</string>
+    <string name="action_sync">Sync</string>
     <string name="preference_file_key">olectronix.hottie.preferences</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_config">Configure Device</string>

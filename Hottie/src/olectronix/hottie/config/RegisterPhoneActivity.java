@@ -3,32 +3,50 @@ package olectronix.hottie.config;
 import olectronix.hottie.R;
 import olectronix.hottie.SMSHandler;
 import olectronix.hottie.SMSReceiver;
+import olectronix.hottie.UserSettingsActivity;
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterPhoneActivity extends FragmentActivity implements
 		OnSmsReceivedListener {
 
 	SMSHandler smsHandler = new SMSHandler(this);
 	SMSReceiver smsReceiver =new SMSReceiver();
+	SharedPreferences sharedPref;
+	String pin;
+	SharedPreferences syncPref;
+	Boolean syncOK;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_phone);
 		setupActionBar();
+		syncPref = this.getSharedPreferences("syncPrefs",Context.MODE_PRIVATE);
+        syncOK = syncPref.getBoolean("syncOK", false);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        pin = sharedPref.getString("hottiePin", "0000");
+
 		IntentFilter filter = new IntentFilter();
 		  filter.addAction("android.provider.Telephony.SMS_RECEIVED");
 		registerReceiver(smsReceiver, filter);
 		smsReceiver.addSmsReceivedListener(this);
+		String command = String.format(
+				getResources().getString(R.string.pinCommand), pin);
+		smsHandler.sendSMS(command);
 	}
 
 	@Override
@@ -45,9 +63,14 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 	@Override
 	protected void onStop() {
 		super.onStop();
-		unregisterReceiver(smsReceiver);
+		
 	}
 
+	@Override
+	protected void onDestroy(){
+		super.onDestroy();
+		unregisterReceiver(smsReceiver);
+	}
 	@Override
 	protected void onRestart() {
 		super.onRestart();
@@ -87,14 +110,6 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void pinConfirmationClick(View view) {
-		String pin = ((EditText) findViewById(R.id.pin_edit_text)).getText()
-				.toString();
-		String command = String.format(
-				getResources().getString(R.string.pinCommand), pin);
-		smsHandler.sendSMS(command);
-	}
-
 	public void showNumberFragment(String no1, String no2, String no3) {
 		View container = findViewById(R.id.fragment_container);
 		if (container != null) {
@@ -113,9 +128,30 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 	@Override
 	public void onSMSReceived(String messageBody) {
 		if (messageBody
+				.equals(getResources().getString(R.string.pinResponseBad)))
+		{
+			 Toast.makeText(this, R.string.pinResponseBad, 
+                     Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(this, UserSettingsActivity.class);
+			startActivity(intent);
+		}
+			
+		if (messageBody
 				.equals(getResources().getString(R.string.pinResponseOK))) {
-			smsHandler
-					.sendSMS(getResources().getString(R.string.numberCommand));
+			if(syncOK)
+			{View container = findViewById(R.id.fragment_container);
+			if (container != null) {
+				RegisterPhoneFragment newFragment = new RegisterPhoneFragment();
+				Bundle args = new Bundle();
+				args.putString(RegisterPhoneFragment.NUMBER1, syncPref.getString("registeredPhone1","None"));
+				args.putString(RegisterPhoneFragment.NUMBER2, syncPref.getString("registeredPhone2","None"));
+				args.putString(RegisterPhoneFragment.NUMBER3, syncPref.getString("registeredPhone3","None"));
+				newFragment.setArguments(args);
+				getSupportFragmentManager().beginTransaction()
+						.add(R.id.fragment_container, newFragment).commit();
+			}}
+			else
+			smsHandler.sendSMS(getResources().getString(R.string.numberCommand));
 		}
 		if (messageBody.contains(getResources().getString(
 				R.string.numberResponse))) {

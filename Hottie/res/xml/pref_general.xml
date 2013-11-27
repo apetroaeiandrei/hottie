@@ -6,6 +6,15 @@
         android:key="hottie_credit_checkbox"
         android:summary="@string/hottie_credit_settings_description"
         android:title="@string/hottie_credit_settings" />
+    <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="1000"
+        android:inputType="text"
+        android:key="hottiePin"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pin" />
 
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
