@@ -4,6 +4,7 @@ import olectronix.hottie.R;
 import olectronix.hottie.SMSHandler;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -15,12 +16,14 @@ import android.widget.Spinner;
 
 public class HeaterTypeActivity extends Activity {
 
+	SharedPreferences syncPref;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_heater_type);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		syncPref = this.getSharedPreferences("syncPrefs", MODE_PRIVATE);
 		Spinner spinner = (Spinner) findViewById(R.id.heater_type_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -29,6 +32,8 @@ public class HeaterTypeActivity extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
+		int position = Integer.parseInt(syncPref.getString("heaterType", "0"));
+		spinner.setSelection(position-1);
 	}
 
 	/**

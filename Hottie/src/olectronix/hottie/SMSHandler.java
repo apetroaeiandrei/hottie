@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class SMSHandler extends Activity {
 	private Context parentActivity;
+	private Boolean delivered=false;
 	public SMSHandler(Context activity) {
 		// TODO Auto-generated constructor stub
 		parentActivity=activity;
@@ -21,13 +22,10 @@ public class SMSHandler extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		
 	}
 	//---sends an SMS message to another device---
-    public void sendSMS(String message)
+    public Boolean sendSMS(String message)
     {        
-
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(parentActivity);
 		String remotePhone = sharedPref.getString("remote_phone_no","0000");
 		
@@ -39,6 +37,9 @@ public class SMSHandler extends Activity {
  
         PendingIntent deliveredPI = PendingIntent.getBroadcast(parentActivity, 0,
             new Intent(DELIVERED), 0);
+        
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(remotePhone, null, message, sentPI, deliveredPI); 
  
         //---when the SMS has been sent---
         parentActivity.registerReceiver(new BroadcastReceiver(){
@@ -49,6 +50,7 @@ public class SMSHandler extends Activity {
                     case Activity.RESULT_OK:
                         Toast.makeText(parentActivity, "SMS sent", 
                                 Toast.LENGTH_SHORT).show();
+                        delivered=true;
                         break;
                     case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
                         Toast.makeText(parentActivity, "Generic failure", 
@@ -88,8 +90,7 @@ public class SMSHandler extends Activity {
             }
         }, new IntentFilter(DELIVERED));        
  
-        SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(remotePhone, null, message, sentPI, deliveredPI);                
+       return delivered;                
     }  
 
 }

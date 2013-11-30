@@ -36,6 +36,12 @@ public class StartScreen extends Activity implements OnSmsReceivedListener {
 	@Override
 	protected void onStop() {
 		super.onStop();
+	}
+	
+	@Override
+	protected void onDestroy()
+	{
+		super.onDestroy();
 		unregisterReceiver(smsReceiver);
 	}
 
@@ -177,7 +183,7 @@ public class StartScreen extends Activity implements OnSmsReceivedListener {
 						return 5;
 					}
 					if (args[0].equals("LIGHTTIME")) {
-						editor.putString("lighttime", args[1]);
+						editor.putString("lightTime", args[1]);
 						editor.commit();
 						return 6;
 					}

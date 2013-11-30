@@ -26,5 +26,7 @@
     <string name="title_activity_heater_ignition">Heater Ignition Dependency</string>
     <string name="title_activity_heater_type">HeaterTypeActivity</string>
     <string name="title_activity_configure_outputs">ConfigureOutputsActivity</string>
+    <string name="unknown_phone">Unknown</string>
+    <string name="flood_control_message">Flooding Not Allowed!</string>
 
 </resources>

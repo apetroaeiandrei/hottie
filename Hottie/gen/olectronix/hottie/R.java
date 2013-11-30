@@ -107,6 +107,7 @@ public final class R {
         public static final int button_set=0x7f05004b;
         public static final int default_output_5=0x7f05001f;
         public static final int default_output_6=0x7f050020;
+        public static final int flood_control_message=0x7f050052;
         public static final int heater_ignition_mode_text=0x7f050011;
         public static final int heaterignModeIndependentText=0x7f05000f;
         public static final int heaterignModeOFFText=0x7f05000d;
@@ -123,9 +124,9 @@ public final class R {
         public static final int high_treshold_hint=0x7f05001d;
         /**  Strings related to Settings 
          */
-        public static final int hottie_credit_settings=0x7f050052;
-        public static final int hottie_credit_settings_description=0x7f050053;
-        public static final int hottie_phone_number=0x7f050054;
+        public static final int hottie_credit_settings=0x7f050054;
+        public static final int hottie_credit_settings_description=0x7f050055;
+        public static final int hottie_phone_number=0x7f050056;
         public static final int low_treshold_hint=0x7f05001e;
         public static final int numberCommand=0x7f050029;
         public static final int numberResponse=0x7f05002a;
@@ -137,26 +138,26 @@ public final class R {
         public static final int pinCommand=0x7f050026;
         public static final int pinResponseBad=0x7f050028;
         public static final int pinResponseOK=0x7f050027;
-        public static final int pref_default_display_name=0x7f050059;
-        public static final int pref_description_social_recommendations=0x7f050057;
+        public static final int pref_default_display_name=0x7f05005b;
+        public static final int pref_description_social_recommendations=0x7f050059;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f05005b;
+        public static final int pref_header_data_sync=0x7f05005d;
         /**  Example General settings 
          */
-        public static final int pref_header_general=0x7f050055;
+        public static final int pref_header_general=0x7f050057;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f05005e;
-        public static final int pref_ringtone_silent=0x7f050061;
-        public static final int pref_title_add_friends_to_messages=0x7f05005a;
-        public static final int pref_title_display_name=0x7f050058;
-        public static final int pref_title_new_message_notifications=0x7f05005f;
-        public static final int pref_title_ringtone=0x7f050060;
-        public static final int pref_title_social_recommendations=0x7f050056;
-        public static final int pref_title_sync_frequency=0x7f05005c;
-        public static final int pref_title_system_sync_settings=0x7f05005d;
-        public static final int pref_title_vibrate=0x7f050062;
+        public static final int pref_header_notifications=0x7f050060;
+        public static final int pref_ringtone_silent=0x7f050063;
+        public static final int pref_title_add_friends_to_messages=0x7f05005c;
+        public static final int pref_title_display_name=0x7f05005a;
+        public static final int pref_title_new_message_notifications=0x7f050061;
+        public static final int pref_title_ringtone=0x7f050062;
+        public static final int pref_title_social_recommendations=0x7f050058;
+        public static final int pref_title_sync_frequency=0x7f05005e;
+        public static final int pref_title_system_sync_settings=0x7f05005f;
+        public static final int pref_title_vibrate=0x7f050064;
         public static final int preference_file_key=0x7f05003b;
         public static final int registerPhoneCommand=0x7f05002b;
         public static final int registerPhoneText=0x7f050000;
@@ -197,7 +198,8 @@ public final class R {
         public static final int title_activity_heater_ignition=0x7f05004e;
         public static final int title_activity_heater_type=0x7f05004f;
         public static final int title_activity_register_phone=0x7f05003e;
-        public static final int title_activity_user_settings=0x7f050051;
+        public static final int title_activity_user_settings=0x7f050053;
+        public static final int unknown_phone=0x7f050051;
     }
     public static final class style {
         /** 

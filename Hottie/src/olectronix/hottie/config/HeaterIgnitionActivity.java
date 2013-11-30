@@ -8,8 +8,11 @@ import olectronix.hottie.R.string;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -35,6 +38,8 @@ public class HeaterIgnitionActivity extends Activity {
 	Button saveButton;
 	TextView tresholdsNoteTextView;
 	TextView tresholdTextView;
+	SharedPreferences syncPref;
+	SharedPreferences generalPref;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -43,6 +48,13 @@ public class HeaterIgnitionActivity extends Activity {
 		setContentView(R.layout.activity_heater_ignition);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		generalPref = PreferenceManager.getDefaultSharedPreferences(this);
+		syncPref = this.getSharedPreferences("syncPrefs", Context.MODE_PRIVATE);
+		String htignMode = syncPref.getString("htignMode", "0");
+		String htignSensor = syncPref.getString("htignSensor", "0");
+		String htignThL = syncPref.getString("htignThL", "0");
+		String htignThH = syncPref.getString("htignThH", "0");
+
 		spinner = (Spinner) findViewById(R.id.heaterign_modes_spinner);
 		sensorsSpinner = (Spinner) findViewById(R.id.heaterign_sensors_spinner);
 		lowTHEditText = (EditText) findViewById(R.id.heaterign_low_treshold);
@@ -53,28 +65,31 @@ public class HeaterIgnitionActivity extends Activity {
 		tresholdsNoteTextView = (TextView) findViewById(R.id.heaterign_temp_treshold_note);
 		tresholdTextView = (TextView) findViewById(R.id.heaterign_temp_tresholds_text);
 
+		// The order of these arrays is important. Please do not change
 		ArrayList<String> spinnerArrayList = new ArrayList<String>();
 		spinnerArrayList.add(getResources().getString(
 				R.string.heaterignModeOFFText));
 		spinnerArrayList.add(getResources().getString(
 				R.string.heaterignModeONText));
 		spinnerArrayList.add(getResources().getString(
-				R.string.heaterignModeIndependentText));
-		spinnerArrayList.add(getResources().getString(
 				R.string.heaterignModeSensorText));
+		spinnerArrayList.add(getResources().getString(
+				R.string.heaterignModeIndependentText));
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				R.layout.heaterign_mode_spinner_layout);
 		adapter.addAll(spinnerArrayList);
 		// Specify the layout to use when the list of choices appears
 		spinner.setAdapter(adapter);
+		spinner.setSelection(Integer.parseInt(htignMode));
 
+		// The order of these arrays is important. Please do not change
 		ArrayList<String> sensorsSpinnerArrayList = new ArrayList<String>();
 		sensorsSpinnerArrayList.add(getResources().getString(
 				R.string.sensor_WTT_temperature_sensor));
 		sensorsSpinnerArrayList.add(getResources().getString(
-				R.string.sensor_interior_temperature_sensor));
-		sensorsSpinnerArrayList.add(getResources().getString(
 				R.string.sensor_exterior_temperature_sensor));
+		sensorsSpinnerArrayList.add(getResources().getString(
+				R.string.sensor_interior_temperature_sensor));
 		sensorsSpinnerArrayList.add(getResources().getString(
 				R.string.sensor_HOTTIE_system_temperature_sensor));
 
@@ -83,6 +98,24 @@ public class HeaterIgnitionActivity extends Activity {
 		sensorSpinnerAdapter.addAll(sensorsSpinnerArrayList);
 		// Specify the layout to use when the list of choices appears
 		sensorsSpinner.setAdapter(sensorSpinnerAdapter);
+		switch (Integer.parseInt(htignSensor)) {
+		case 1:
+			sensorsSpinner.setSelection(0);
+			break;
+		case 2:
+			sensorsSpinner.setSelection(1);
+			break;
+		case 4:
+			sensorsSpinner.setSelection(2);
+			break;
+		case 8:
+			sensorsSpinner.setSelection(3);
+			break;
+		default:
+			sensorsSpinner.setSelection(0);
+		}
+		lowTHEditText.setText(htignThL);
+		highTHEditText.setText(htignThH);
 
 		lowTHEditText.addTextChangedListener(new TextWatcher() {
 
@@ -90,15 +123,16 @@ public class HeaterIgnitionActivity extends Activity {
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				String textString = s.toString();
-				String otherEditView =highTHEditText.getText().toString();
-				if (textString.equals("") 
+				String otherEditView = highTHEditText.getText().toString();
+				if (textString.equals("")
 						|| textString.equals("-")
 						|| Integer.parseInt(textString) < -50
 						|| Integer.parseInt(textString) > 100
 						|| otherEditView.equals("")
 						|| Integer.parseInt(otherEditView) < -50
 						|| Integer.parseInt(otherEditView) > 100
-						|| Integer.parseInt(textString)>Integer.parseInt(otherEditView)) {
+						|| Integer.parseInt(textString) > Integer
+								.parseInt(otherEditView)) {
 					saveButton.setEnabled(false);
 					tresholdsNoteTextView.setVisibility(View.VISIBLE);
 				} else {
@@ -126,14 +160,15 @@ public class HeaterIgnitionActivity extends Activity {
 					int count) {
 				String textString = s.toString();
 				String otherEditView = lowTHEditText.getText().toString();
-				if (textString.equals("") 
+				if (textString.equals("")
 						|| textString.equals("-")
 						|| Integer.parseInt(textString) < -50
 						|| Integer.parseInt(textString) > 100
 						|| otherEditView.equals("")
 						|| Integer.parseInt(otherEditView) < -50
 						|| Integer.parseInt(otherEditView) > 100
-						|| Integer.parseInt(textString)<Integer.parseInt(otherEditView)) {
+						|| Integer.parseInt(textString) < Integer
+								.parseInt(otherEditView)) {
 					saveButton.setEnabled(false);
 					tresholdsNoteTextView.setVisibility(View.VISIBLE);
 				} else {
@@ -241,26 +276,41 @@ public class HeaterIgnitionActivity extends Activity {
 
 	public void heaterignSaveSettings(View v) {
 		String selectedMode = spinner.getSelectedItem().toString();
-
+		final SharedPreferences.Editor editor = generalPref.edit();
 		SMSHandler handler = new SMSHandler(this);
 		String command = "";
 		if (selectedMode.equals(getResources().getString(
 				R.string.heaterignModeOFFText))) {
 			command = String.format(
 					getResources().getString(R.string.setHeaterignMode), 0);
-			handler.sendSMS(command);
+			if (handler.sendSMS(command))
+				if (!generalPref.getBoolean("hottie_credit_checkbox", false)) {
+					editor.putString("htignMode", "0");
+					editor.commit();
+				} else
+					waitForAnswer();
 		}
 		if (selectedMode.equals(getResources().getString(
 				R.string.heaterignModeONText))) {
 			command = String.format(
 					getResources().getString(R.string.setHeaterignMode), 1);
-			handler.sendSMS(command);
+			if (handler.sendSMS(command))
+				if (!generalPref.getBoolean("hottie_credit_checkbox", false)) {
+					editor.putString("htignMode", "1");
+					editor.commit();
+				} else
+					waitForAnswer();
 		}
 		if (selectedMode.equals(getResources().getString(
 				R.string.heaterignModeIndependentText))) {
 			command = String.format(
 					getResources().getString(R.string.setHeaterignMode), 3);
-			handler.sendSMS(command);
+			if (handler.sendSMS(command))
+				if (!generalPref.getBoolean("hottie_credit_checkbox", false)) {
+					editor.putString("htignMode", "3");
+					editor.commit();
+				} else
+					waitForAnswer();
 		}
 		if (selectedMode.equals(getResources().getString(
 				R.string.heaterignModeSensorText))) {
@@ -274,7 +324,15 @@ public class HeaterIgnitionActivity extends Activity {
 						getResources().getString(
 								R.string.setHeaterignModeSensor), 2, 1, lowTh,
 						highTh);
-				handler.sendSMS(command);
+				if (handler.sendSMS(command))
+					if (!generalPref.getBoolean("hottie_credit_checkbox", false)) {
+						editor.putString("htignMode", "2");
+						editor.putString("htignSensor", "1");
+						editor.putString("htignThL", lowTh);
+						editor.putString("htignThH", highTh);
+						editor.commit();
+					} else
+						waitForAnswer();
 			}
 			if (selectedSensor.equals(getResources().getString(
 					R.string.sensor_exterior_temperature_sensor))) {
@@ -282,7 +340,15 @@ public class HeaterIgnitionActivity extends Activity {
 						getResources().getString(
 								R.string.setHeaterignModeSensor), 2, 2, lowTh,
 						highTh);
-				handler.sendSMS(command);
+				if (handler.sendSMS(command))
+					if (!generalPref.getBoolean("hottie_credit_checkbox", false)) {
+						editor.putString("htignMode", "2");
+						editor.putString("htignSensor", "2");
+						editor.putString("htignThL", lowTh);
+						editor.putString("htignThH", highTh);
+						editor.commit();
+					} else
+						waitForAnswer();
 			}
 			if (selectedSensor.equals(getResources().getString(
 					R.string.sensor_interior_temperature_sensor))) {
@@ -290,7 +356,15 @@ public class HeaterIgnitionActivity extends Activity {
 						getResources().getString(
 								R.string.setHeaterignModeSensor), 2, 4, lowTh,
 						highTh);
-				handler.sendSMS(command);
+				if (handler.sendSMS(command))
+					if (!generalPref.getBoolean("hottie_credit_checkbox", false)) {
+						editor.putString("htignMode", "2");
+						editor.putString("htignSensor", "4");
+						editor.putString("htignThL", lowTh);
+						editor.putString("htignThH", highTh);
+						editor.commit();
+					} else
+						waitForAnswer();
 			}
 			if (selectedSensor.equals(getResources().getString(
 					R.string.sensor_HOTTIE_system_temperature_sensor))) {
@@ -298,8 +372,21 @@ public class HeaterIgnitionActivity extends Activity {
 						getResources().getString(
 								R.string.setHeaterignModeSensor), 2, 8, lowTh,
 						highTh);
-				handler.sendSMS(command);
+				if (handler.sendSMS(command))
+					if (!generalPref.getBoolean("hottie_credit_checkbox", false)) {
+						editor.putString("htignMode", "2");
+						editor.putString("htignSensor", "8");
+						editor.putString("htignThL", lowTh);
+						editor.putString("htignThH", highTh);
+						editor.commit();
+					} else
+						waitForAnswer();
 			}
 		}
+	}
+
+	private void waitForAnswer() {
+		// TODO Auto-generated method stub
+
 	}
 }

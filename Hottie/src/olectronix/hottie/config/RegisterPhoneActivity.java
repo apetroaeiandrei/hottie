@@ -37,9 +37,9 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 		setupActionBar();
 		syncPref = this.getSharedPreferences("syncPrefs",Context.MODE_PRIVATE);
         syncOK = syncPref.getBoolean("syncOK", false);
+        Boolean ableToRespond = syncPref.getBoolean("hottie_credit_checkbox", false);
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         pin = sharedPref.getString("hottiePin", "0000");
-
 		IntentFilter filter = new IntentFilter();
 		  filter.addAction("android.provider.Telephony.SMS_RECEIVED");
 		registerReceiver(smsReceiver, filter);
@@ -47,6 +47,18 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 		String command = String.format(
 				getResources().getString(R.string.pinCommand), pin);
 		smsHandler.sendSMS(command);
+		if (!ableToRespond)
+		{
+			RegisterPhoneFragment newFragment = new RegisterPhoneFragment();
+			Bundle args = new Bundle();
+			args.putString(RegisterPhoneFragment.NUMBER1, getResources().getString(R.string.unknown_phone));
+			args.putString(RegisterPhoneFragment.NUMBER2, getResources().getString(R.string.unknown_phone));
+			args.putString(RegisterPhoneFragment.NUMBER3, getResources().getString(R.string.unknown_phone));
+			newFragment.setArguments(args);
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.fragment_container, newFragment).commit();
+		}
+		
 	}
 
 	@Override
@@ -63,12 +75,12 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 	@Override
 	protected void onStop() {
 		super.onStop();
-		
 	}
 
 	@Override
 	protected void onDestroy(){
 		super.onDestroy();
+		smsReceiver.removeSmsReceivedListener(this);
 		unregisterReceiver(smsReceiver);
 	}
 	@Override
@@ -121,7 +133,7 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 			args.putString(RegisterPhoneFragment.NUMBER3, no3);
 			newFragment.setArguments(args);
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.fragment_container, newFragment).commit();
+					.replace(R.id.fragment_container, newFragment).commit();
 		}
 	}
 
@@ -141,14 +153,9 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 			if(syncOK)
 			{View container = findViewById(R.id.fragment_container);
 			if (container != null) {
-				RegisterPhoneFragment newFragment = new RegisterPhoneFragment();
-				Bundle args = new Bundle();
-				args.putString(RegisterPhoneFragment.NUMBER1, syncPref.getString("registeredPhone1","None"));
-				args.putString(RegisterPhoneFragment.NUMBER2, syncPref.getString("registeredPhone2","None"));
-				args.putString(RegisterPhoneFragment.NUMBER3, syncPref.getString("registeredPhone3","None"));
-				newFragment.setArguments(args);
-				getSupportFragmentManager().beginTransaction()
-						.add(R.id.fragment_container, newFragment).commit();
+				showNumberFragment(syncPref.getString("registeredPhone1","None"),
+						syncPref.getString("registeredPhone2","None"), 
+						syncPref.getString("registeredPhone3","None"));				
 			}}
 			else
 			smsHandler.sendSMS(getResources().getString(R.string.numberCommand));
@@ -162,14 +169,7 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 
 			View container = findViewById(R.id.fragment_container);
 			if (container != null) {
-				RegisterPhoneFragment newFragment = new RegisterPhoneFragment();
-				Bundle args = new Bundle();
-				args.putString(RegisterPhoneFragment.NUMBER1, number1);
-				args.putString(RegisterPhoneFragment.NUMBER2, number2);
-				args.putString(RegisterPhoneFragment.NUMBER3, number3);
-				newFragment.setArguments(args);
-				getSupportFragmentManager().beginTransaction()
-						.add(R.id.fragment_container, newFragment).commit();
+				showNumberFragment(number1, number2, number3);				
 			}
 		}
 	}
