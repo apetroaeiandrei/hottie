@@ -3,13 +3,8 @@ package olectronix.hottie.config;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-
 import olectronix.hottie.R;
 import olectronix.hottie.SMSHandler;
-import olectronix.hottie.R.string;
-import android.R.bool;
-import android.R.integer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -76,6 +71,7 @@ public class ConfigMenuAdapter extends BaseAdapter {
 					.findViewById(R.id.button_set);
 			final ConfigMenuItem holderFinal = holder;
 			holder.button_go.setOnClickListener(new Button.OnClickListener() {
+				@SuppressLint("SimpleDateFormat")
 				public void onClick(View v) {
 					Calendar c = Calendar.getInstance();
 					long diff = 0;
@@ -123,6 +119,11 @@ public class ConfigMenuAdapter extends BaseAdapter {
 										.getString(R.string.saveSettingsText))) {
 							SMSHandler handler = new SMSHandler(currentContext);
 							String command = "";
+							int ignUpdateValue = 0;
+							int lightTimeoutValue = 0;
+							int wttErrNoteValue = 0;
+							int comErrNoteValue = 0;
+							int ledValue = 0;
 							for (ConfigMenuItem item : menusArrayList) {
 								// Ignition Detection Time command
 								if (item.textView
@@ -132,14 +133,8 @@ public class ConfigMenuAdapter extends BaseAdapter {
 												.getResources()
 												.getString(
 														R.string.setIgnUpdateText))) {
-									command = String
-											.format(currentContext
-													.getResources()
-													.getString(
-															R.string.setIgnUpdateCommand),
-													item.seek_bar1
-															.getProgress());
-									handler.sendSMS(command);
+									ignUpdateValue = item.seek_bar1
+											.getProgress();
 								}
 								// Light Timeout command
 								if (item.textView
@@ -149,14 +144,8 @@ public class ConfigMenuAdapter extends BaseAdapter {
 												.getResources()
 												.getString(
 														R.string.setLightTimeoutText))) {
-									command = String
-											.format(currentContext
-													.getResources()
-													.getString(
-															R.string.setLightTimeoutCommand),
-													item.seek_bar1
-															.getProgress());
-									handler.sendSMS(command);
+									lightTimeoutValue = item.seek_bar1
+											.getProgress();
 								}
 								// Error notification (WTT)
 								if (item.textView
@@ -166,19 +155,10 @@ public class ConfigMenuAdapter extends BaseAdapter {
 												.getResources()
 												.getString(
 														R.string.setWttErrorNoteText))) {
-									int state;
 									if (item.switch1.isChecked())
-										state = 1;
+										wttErrNoteValue = 1;
 									else
-										state = 0;
-
-									command = String
-											.format(currentContext
-													.getResources()
-													.getString(
-															R.string.setWttErrorNoteCommand),
-													state);
-									handler.sendSMS(command);
+										wttErrNoteValue = 0;
 								}
 								// Error notification (COM)
 								if (item.textView
@@ -188,19 +168,10 @@ public class ConfigMenuAdapter extends BaseAdapter {
 												.getResources()
 												.getString(
 														R.string.setComErrorNoteText))) {
-									int state;
 									if (item.switch1.isChecked())
-										state = 1;
+										comErrNoteValue = 1;
 									else
-										state = 0;
-
-									command = String
-											.format(currentContext
-													.getResources()
-													.getString(
-															R.string.setComErrorNoteCommand),
-													state);
-									handler.sendSMS(command);
+										comErrNoteValue = 0;
 								}
 
 								// Error notification (LED)
@@ -209,21 +180,18 @@ public class ConfigMenuAdapter extends BaseAdapter {
 										.toString()
 										.equals(currentContext.getResources()
 												.getString(R.string.setLedText))) {
-									int state;
 									if (item.switch1.isChecked())
-										state = 1;
+										ledValue = 1;
 									else
-										state = 0;
-
-									command = String
-											.format(currentContext
-													.getResources()
-													.getString(
-															R.string.setLedCommand),
-													state);
-									handler.sendSMS(command);
+										ledValue = 0;
 								}
 							}
+							command = String.format(
+									currentContext.getResources().getString(
+											R.string.saveAllSettingsCommand),
+									ignUpdateValue, lightTimeoutValue,
+									wttErrNoteValue, comErrNoteValue, ledValue);
+							handler.sendSMS(command);
 						}
 					} else {
 						Toast.makeText(

@@ -13,15 +13,15 @@
     <string name="registerPhoneCommand">NUMBER:%1$s,%2$s</string>
     <string name="setTimeCommand">TIME:%1$s,%2$s-%3$s</string>
     <string name="setDefaultCommand">DEFAULT</string>
-    <string name="setIgnUpdateCommand">IGNUPDATE:%1$s</string>
-    <string name="setLightTimeoutCommand">LIGHTTIMEOUT:%1$S</string>
-    <string name="setWttErrorNoteCommand">WTTERRNOTE:%1$S</string>
-    <string name="setComErrorNoteCommand">COMERRNOTE:%1$s</string>
-    <string name="setLedCommand">LED:%1$s</string>
+<!--     <string name="setIgnUpdateCommand">IGNUPDATE:%1$s</string> -->
+<!--     <string name="setLightTimeoutCommand">LIGHTTIMEOUT:%1$S</string> -->
+<!--     <string name="setWttErrorNoteCommand">WTTERRNOTE:%1$S</string> -->
+<!--     <string name="setComErrorNoteCommand">COMERRNOTE:%1$s</string> -->
+<!--     <string name="setLedCommand">LED:%1$s</string> -->
     <string name="setHeaterignMode">HEATERIGN:%1$s</string>
     <string name="setHeaterignModeSensor">HEATERIGN:%1$s,%2$s,%3$s,%4$s</string>
     <string name="setHeaterType">TYPE:%1$s</string>
     <string name="outputOnCommand">%1$s on</string>
     <string name="outputOffCommand">%1$s off</string>
-    <string name="allSettingsCommand">IGNUPDATE:%1$s;LIGHTTIMEOUT:%2$S;WTTERRNOTE:%3$S;COMERRNOTE:%4$s;LED:%5$s</string>
+    <string name="saveAllSettingsCommand">SYNC:%1$s,%2$S,%3$S,%4$s,%5$s</string>
 </resources>
