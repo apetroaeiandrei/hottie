@@ -28,5 +28,6 @@
     <string name="title_activity_configure_outputs">ConfigureOutputsActivity</string>
     <string name="unknown_phone">Unknown</string>
     <string name="flood_control_message">Flooding Not Allowed!</string>
+    <string name="title_activity_swipe_views">SwipeViews</string>
 
 </resources>

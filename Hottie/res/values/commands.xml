@@ -4,7 +4,7 @@
     <string name="onCommand">ON</string>
     <string name="offCommand">OFF</string>
     <string name="syncCommand">SYNC</string>
-    <string name="syncResponse">#SYNC</string>
+    <string name="syncResponse">SYNC;</string>
     <string name="pinCommand">PIN:%1$s</string>
     <string name="pinResponseOK">PIN OK</string>
     <string name="pinResponseBad">Invalid PIN code!</string>
