@@ -36,9 +36,9 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_register_phone);
 		setupActionBar();
 		syncPref = this.getSharedPreferences("syncPrefs",Context.MODE_PRIVATE);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         syncOK = syncPref.getBoolean("syncOK", false);
-        Boolean ableToRespond = syncPref.getBoolean("hottie_credit_checkbox", false);
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean ableToRespond = sharedPref.getBoolean("hottie_credit_checkbox", false);
         pin = sharedPref.getString("hottiePin", "0000");
 		IntentFilter filter = new IntentFilter();
 		  filter.addAction("android.provider.Telephony.SMS_RECEIVED");
@@ -162,7 +162,7 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 		}
 		if (messageBody.contains(getResources().getString(
 				R.string.numberResponse))) {
-			String[] parts = messageBody.split(" ");
+			String[] parts = messageBody.split("(\n| )");
 			String number1 = parts[3];
 			String number2 = parts[5];
 			String number3 = parts[7];

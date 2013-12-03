@@ -10,7 +10,7 @@
     <string name="pinResponseBad">Invalid PIN code!</string>
     <string name="numberCommand">NUMBER</string>
     <string name="numberResponse">Allowed numbers:</string>
-    <string name="registerPhoneCommand">NUMBER:%1$s,%2$s#</string>
+    <string name="registerPhoneCommand">NUMBER:%1$s,%2$s</string>
     <string name="setTimeCommand">TIME:%1$s,%2$s-%3$s</string>
     <string name="setDefaultCommand">DEFAULT</string>
     <string name="setIgnUpdateCommand">IGNUPDATE:%1$s</string>
@@ -23,4 +23,5 @@
     <string name="setHeaterType">TYPE:%1$s</string>
     <string name="outputOnCommand">%1$s on</string>
     <string name="outputOffCommand">%1$s off</string>
+    <string name="allSettingsCommand">IGNUPDATE:%1$s;LIGHTTIMEOUT:%2$S;WTTERRNOTE:%3$S;COMERRNOTE:%4$s;LED:%5$s</string>
 </resources>
