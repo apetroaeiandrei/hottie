@@ -113,7 +113,7 @@ public class StartScreen extends Activity implements OnSmsReceivedListener {
 				public void run() {
 					for (int i = 1; i <= 9; i++) {
 						// process some tasks
-						progressBarStatus = saveSyncSettings(parts[i]);
+						progressBarStatus = saveSyncSettings(parts[i],i);
 
 						// your computer is too fast, sleep 1 second
 						try {
@@ -145,60 +145,62 @@ public class StartScreen extends Activity implements OnSmsReceivedListener {
 					}
 				}
 
-				private int saveSyncSettings(String command) {
+				private int saveSyncSettings(String command, int i) {
 					String[] args = command.split(",");
-					if (args[0].equals("NO")) {
-						editor.putString("registeredPhone1", args[1]);
-						editor.putString("registeredPhone2", args[2]);
-						editor.putString("registeredPhone3", args[3]);
+					switch (i) {
+					case 1:
+						editor.putString("registeredPhone1", args[0]);
+						editor.putString("registeredPhone2", args[1]);
+						editor.putString("registeredPhone3", args[2]);
 						editor.commit();
 						return 1;
-					}
-					if (args[0].equals("HEATERIGN")) {
-						editor.putString("htignMode", args[1]);
-						editor.putString("htignSensor", args[2]);
-						editor.putString("htignThL", args[3]);
-						editor.putString("htignThH", args[4]);
+						
+					
+					case 2:
+						editor.putString("htignMode", args[0]);
+						editor.putString("htignSensor", args[1]);
+						editor.putString("htignThL", args[2]);
+						editor.putString("htignThH", args[3]);
 						editor.commit();
 						return 2;
-					}
-					if (args[0].equals("OUTPUTS")) {
-						editor.putString("output1", args[1]);
-						editor.putString("output2", args[2]);
-						editor.putString("output3", args[3]);
-						editor.putString("output4", args[4]);
-						editor.putString("output5", args[5]);
-						editor.putString("output6", args[6]);
+					
+					case 3:
+						editor.putString("output1", args[0]);
+						editor.putString("output2", args[1]);
+						editor.putString("output3", args[2]);
+						editor.putString("output4", args[3]);
+						editor.putString("output5", args[4]);
+						editor.putString("output6", args[5]);
 						editor.commit();
 						return 3;
-					}
-					if (args[0].equals("TYPE")) {
-						editor.putString("heaterType", args[1]);
+					
+					case 4:
+						editor.putString("heaterType", args[0]);
 						editor.commit();
 						return 4;
-					}
-					if (args[0].equals("IGNTIME")) {
-						editor.putString("ignTime", args[1]);
+					
+					case 5:
+						editor.putString("ignTime", args[0]);
 						editor.commit();
 						return 5;
-					}
-					if (args[0].equals("LIGHTTIME")) {
-						editor.putString("lightTime", args[1]);
+					
+					case 6:
+						editor.putString("lightTime", args[0]);
 						editor.commit();
 						return 6;
-					}
-					if (args[0].equals("WTTERR")) {
-						editor.putString("wtterr", args[1]);
+					
+					case 7:
+						editor.putString("wtterr", args[0]);
 						editor.commit();
 						return 7;
-					}
-					if (args[0].equals("COMERR")) {
-						editor.putString("comerr", args[1]);
+					
+					case 8:
+						editor.putString("comerr", args[0]);
 						editor.commit();
 						return 8;
-					}
-					if (args[0].equals("LED")) {
-						editor.putString("led", args[1]);
+					
+					case 9:
+						editor.putString("led", args[0]);
 						editor.commit();
 						return 9;
 					}
