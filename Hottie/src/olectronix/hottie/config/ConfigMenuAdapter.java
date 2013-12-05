@@ -3,6 +3,7 @@ package olectronix.hottie.config;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import olectronix.hottie.R;
 import olectronix.hottie.SMSHandler;
 import android.annotation.SuppressLint;

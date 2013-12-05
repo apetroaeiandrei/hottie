@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/output_grid_layout"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_margin="0dp"
+    android:alignmentMode="alignBounds"
+    android:columnCount="3"
+    android:columnOrderPreserved="false"
+    android:orientation="horizontal"
+    android:padding="0dp"
+    tools:context=".ConfigOutputFragment" >
+
+    <TextView
+        android:id="@+id/output_fragment_text_view1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/output_name" />
+
+    <EditText
+        android:id="@+id/output_name_edit_text"
+        android:layout_columnSpan="2"
+        android:hint="Name" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_indep" />
+
+    <CheckBox android:id="@+id/output_indep_check_box" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_mode" />
+
+    <Spinner
+        android:id="@+id/output_mode_spinner"
+        android:layout_columnSpan="2" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_sensor" />
+
+    <Spinner
+        android:id="@+id/output_sensor_spinner"
+        android:layout_columnSpan="2" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_max_time" />
+
+    <SeekBar
+        android:id="@+id/output_max_time_seek"
+        android:max="240" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_on_temp" />
+
+    <SeekBar
+        android:id="@+id/output_on_temp_seek"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_off_temp" />
+
+    <SeekBar
+        android:id="@+id/output_off_temp_seek"
+        android:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_off_voltage" />
+
+    <SeekBar
+        android:id="@+id/output_off_voltage_seek"
+        android:layout_gravity="fill_horizontal"
+        android:max="14000" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_off_current" />
+
+    <SeekBar
+        android:id="@+id/output_off_current_seek"
+        android:layout_gravity="fill_horizontal"
+        android:max="12000" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_max_intensity" />
+
+    <SeekBar
+        android:id="@+id/output_max_intensity_seek"
+        android:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:layout_column="0"
+        android:text="@string/output_min_intensity" />
+
+    <SeekBar
+        android:id="@+id/output_min_intensity_seek"
+        android:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/output_max_time_indicator"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_row="4"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/output_on_temp_indicator"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_row="5"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/output_off_temp_indicator"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_row="6"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/output_off_voltage_indicator"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_row="7"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/output_off_current_indicator"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_row="8"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/output_max_intensity_indicator"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_row="9"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/output_min_intensity_indicator"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_row="10"
+        android:text="" />
+
+    <Button
+        android:id="@+id/output_save_button"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_columnSpan="3"
+        android:text="@string/button_save_settings" />
+
+</GridLayout>

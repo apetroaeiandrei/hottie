@@ -1,6 +1,5 @@
 package olectronix.hottie.config;
 
-import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;

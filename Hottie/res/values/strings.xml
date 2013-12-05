@@ -29,5 +29,17 @@
     <string name="unknown_phone">Unknown</string>
     <string name="flood_control_message">Flooding Not Allowed!</string>
     <string name="title_activity_swipe_views">SwipeViews</string>
+    <string name="title_activity_config_output_specific">ConfigOutputSpecificActivity</string>
+    <string name="output_name">Output Name</string>
+    <string name="output_indep">Independent</string>
+    <string name="output_max_time">ON Max Time</string>
+    <string name="output_on_temp">ON Temp</string>
+    <string name="output_off_temp">OFF Temp</string>
+    <string name="output_off_voltage">OFF Voltage</string>
+    <string name="output_off_current">OFF Current</string>
+    <string name="output_max_intensity">Max Intensity</string>
+    <string name="output_min_intensity">Min Intensity</string>
+    <string name="output_mode">Mode</string>
+    <string name="output_sensor">Temp Sensor</string>
 
 </resources>

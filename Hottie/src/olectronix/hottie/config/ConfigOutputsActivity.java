@@ -4,30 +4,32 @@ import java.util.ArrayList;
 
 import olectronix.hottie.R;
 import android.annotation.TargetApi;
-import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class ConfigOutputsActivity extends Activity {
-ListView lv;
+public class ConfigOutputsActivity extends FragmentActivity {
+	private ListView lv;
+	private SharedPreferences syncPref;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_configure_outputs);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
+		syncPref = getSharedPreferences("syncPrefs", Context.MODE_PRIVATE);
 		lv = (ListView) findViewById(R.id.outputs_config_list_view);
-		
+
 		ArrayList<ConfigOutputsItem> your_array_list = new ArrayList<ConfigOutputsItem>();
-		your_array_list = populateConfigMenu();		
+		your_array_list = populateConfigMenu();
 		lv.setAdapter(new ConfigOutputsAdapter(this, your_array_list));
 	}
 
@@ -64,27 +66,42 @@ ListView lv;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	private ArrayList<ConfigOutputsItem> populateConfigMenu(){
-		//Check if hottie device is able to respond via SMS
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		boolean responseEnabled = sharedPref.getBoolean("hottie_credit_checkbox", false);
+
+	private ArrayList<ConfigOutputsItem> populateConfigMenu() {
+		// Check if hottie device is able to respond via SMS
+		SharedPreferences sharedPref = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		boolean responseEnabled = sharedPref.getBoolean(
+				"hottie_credit_checkbox", false);
+		boolean syncOk = syncPref.getBoolean("syncOK", false);
 		
-		//ArrayList used to populate the ListView with outputs
+
+		// ArrayList used to populate the ListView with outputs
 		ArrayList<ConfigOutputsItem> result = new ArrayList<ConfigOutputsItem>();
-		
-		if (!responseEnabled){
-		ConfigOutputsItem configOutputsItem = new ConfigOutputsItem();
-		configOutputsItem.setOutputName(getResources().getString(R.string.default_output_5));
-		result.add(configOutputsItem);
-		
-		configOutputsItem = new ConfigOutputsItem();
-		configOutputsItem.setOutputName(getResources().getString(R.string.default_output_6));
-		result.add(configOutputsItem);
-		}
-		else {
-			 Toast.makeText(this, "Not implemented yet", 
-                     Toast.LENGTH_SHORT).show();
-			new UnsupportedOperationException("Not implemented yet");
+
+		if (!syncOk) {
+			ConfigOutputsItem configOutputsItem = new ConfigOutputsItem();
+			configOutputsItem.setOutputName(getResources().getString(
+					R.string.default_output_5));
+			result.add(configOutputsItem);
+
+			configOutputsItem = new ConfigOutputsItem();
+			configOutputsItem.setOutputName(getResources().getString(
+					R.string.default_output_6));
+			result.add(configOutputsItem);
+		} else {
+			ConfigOutputsItem configOutputsItem;
+			for (int i=0;i<6;i++)
+			{
+				int outputType = syncPref.getInt("outputType"+(i+1), 0);
+				if (outputType!=0)
+				{
+				configOutputsItem = new ConfigOutputsItem();
+				configOutputsItem.setOutputName(syncPref.getString("output"+(i+1), "N/A"));
+				configOutputsItem.setOutputType(outputType);
+				result.add(configOutputsItem);
+				}
+			}
 		}
 		return result;
 	}

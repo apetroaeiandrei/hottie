@@ -2,8 +2,8 @@ package olectronix.hottie;
 
 import olectronix.hottie.config.OnSmsReceivedListener;
 import android.app.ActionBar;
-import android.app.ProgressDialog;
 import android.app.ActionBar.Tab;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -134,7 +134,7 @@ public class SwipeViews extends FragmentActivity implements
 			progressBar.setMessage("Syncing settings");
 			progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			progressBar.setProgress(0);
-			progressBar.setMax(9);
+			progressBar.setMax(10);
 			progressBar.show();
 
 			// reset progress bar status
@@ -142,7 +142,7 @@ public class SwipeViews extends FragmentActivity implements
 
 			new Thread(new Runnable() {
 				public void run() {
-					for (int i = 1; i <= 9; i++) {
+					for (int i = 1; i <= 10; i++) {
 						// process some tasks
 						progressBarStatus = saveSyncSettings(parts[i], i);
 
@@ -161,7 +161,7 @@ public class SwipeViews extends FragmentActivity implements
 						});
 					}
 
-					if (progressBarStatus >= 9) {
+					if (progressBarStatus >= 10) {
 						// sleep 2 seconds, so that you can see the 100%
 						try {
 							Thread.sleep(1000);
@@ -233,7 +233,17 @@ public class SwipeViews extends FragmentActivity implements
 						editor.putString("led", args[0]);
 						editor.commit();
 						return 9;
-					}
+					
+					case 10:
+						editor.putInt("outputType1", Integer.parseInt(args[0]));
+						editor.putInt("outputType2", Integer.parseInt(args[1]));
+						editor.putInt("outputType3", Integer.parseInt(args[2]));
+						editor.putInt("outputType4", Integer.parseInt(args[3]));
+						editor.putInt("outputType5", Integer.parseInt(args[4]));
+						editor.putInt("outputType6", Integer.parseInt(args[5]));
+						editor.commit();
+						return 10;
+					}	
 					return 0;
 				}
 			}).start();

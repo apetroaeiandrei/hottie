@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import olectronix.hottie.R;
 import olectronix.hottie.SMSHandler;
-import olectronix.hottie.R.string;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -25,7 +24,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 
 public class HeaterIgnitionActivity extends Activity {
