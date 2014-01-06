@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import olectronix.hottie.R;
 import olectronix.hottie.SMSHandler;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -48,7 +50,7 @@ public class ConfigOutputsAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ConfigOutputsItem holder = new ConfigOutputsItem();
-		final int fragmentContainerPosition = position+123;
+		final int fragmentContainerPosition = position + 123;
 		Button onButton;
 		Button offButton;
 		Button configButton;
@@ -68,7 +70,7 @@ public class ConfigOutputsAdapter extends BaseAdapter {
 
 		holder.nameTextView = (TextView) convertView
 				.findViewById(R.id.output_name_text_view);
-		
+
 		holder.setFragmentContainer(fragmentContainer);
 		onButton = (Button) convertView.findViewById(R.id.output_on_button);
 		offButton = (Button) convertView.findViewById(R.id.output_off_button);
@@ -80,7 +82,7 @@ public class ConfigOutputsAdapter extends BaseAdapter {
 		holder.nameTextView.setText(menusArrayList.get(position)
 				.getOutputName());
 		final ConfigOutputsItem holderFinal = holder;
-		
+
 		onButton.setOnClickListener(new Button.OnClickListener() {
 			SMSHandler handler = new SMSHandler(currentContext);
 
@@ -101,7 +103,7 @@ public class ConfigOutputsAdapter extends BaseAdapter {
 				handler.sendSMS(command);
 			}
 		});
-		
+
 		configButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				ConfigOutputFragment fragment = new ConfigOutputFragment();
@@ -109,9 +111,16 @@ public class ConfigOutputsAdapter extends BaseAdapter {
 				args.putString("name", holderFinal.getOutputName());
 				args.putInt("type", holderFinal.getOutputType());
 				fragment.setArguments(args);
-				FragmentTransaction transaction = ((FragmentActivity) currentContext)
-						.getSupportFragmentManager().beginTransaction();
-				transaction.add(fragmentContainerPosition,fragment);
+				android.support.v4.app.FragmentManager fragmentManager = ((FragmentActivity) currentContext)
+						.getSupportFragmentManager();
+				FragmentTransaction transaction = fragmentManager
+						.beginTransaction();
+				Fragment existingFragment = fragmentManager
+						.findFragmentById(fragmentContainerPosition);
+				if (existingFragment == null)
+					transaction.add(fragmentContainerPosition, fragment);
+				else
+					transaction.remove(existingFragment);
 				transaction.commit();
 			}
 		});

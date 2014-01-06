@@ -41,5 +41,8 @@
     <string name="output_min_intensity">Min Intensity</string>
     <string name="output_mode">Mode</string>
     <string name="output_sensor">Temp Sensor</string>
+    <string name="output_mode_never">Never ON</string>
+    <string name="output_mode_sms_request">SMS request</string>
+    <string name="output_mode_auto">Automatic</string>
 
 </resources>
