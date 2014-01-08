@@ -44,5 +44,10 @@
     <string name="output_mode_never">Never ON</string>
     <string name="output_mode_sms_request">SMS request</string>
     <string name="output_mode_auto">Automatic</string>
+    <string name="service_name">Hottie SMS Service</string>
+    <string name="title_activity_report_graph">ReportGraphActivity</string>
+    <string name="graph_serie">Serie to plot</string>
+    <string name="graph_duration_start">Start time</string>
+    <string name="graph_duration_stop">End time</string>
 
 </resources>

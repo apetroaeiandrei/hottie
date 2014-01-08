@@ -1,5 +1,7 @@
 package olectronix.hottie;
 
+import java.util.Calendar;
+
 import olectronix.hottie.config.OnSmsReceivedListener;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -43,6 +45,18 @@ public class SwipeViews extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_swipe_views);
+
+//		ReportDataSource datasource = new ReportDataSource(this);
+//		datasource.open();
+//		datasource.delete();
+//		datasource.close();
+		
+		// use this to start and trigger a service
+		Intent i = new Intent(this, HottieService.class);
+		// potentially add data to the intent
+		i.putExtra("KEY1", "Value to be used by the service");
+		this.startService(i);
+
 		IntentFilter filter = new IntentFilter();
 		filter.addAction("android.provider.Telephony.SMS_RECEIVED");
 		registerReceiver(smsReceiver, filter);
@@ -72,7 +86,7 @@ public class SwipeViews extends FragmentActivity implements
 			public void onTabSelected(Tab tab,
 					android.app.FragmentTransaction arg1) {
 				// TODO Auto-generated method stub
-				mViewPager.setCurrentItem(tab.getPosition(),true);
+				mViewPager.setCurrentItem(tab.getPosition(), true);
 			}
 
 			@Override
@@ -122,6 +136,29 @@ public class SwipeViews extends FragmentActivity implements
 	}
 
 	public void onSMSReceived(String messageBody) {
+		// Insert Report into database
+		if (messageBody.contains(getResources().getString(
+				R.string.statusReportResponse))
+				&& !messageBody.contains("%")) {
+			final String[] parts = messageBody.split("[\n:]");
+			ReportDataSource datasource = new ReportDataSource(this);
+			datasource.open();
+			double exterior = Double.parseDouble(parts[5]);
+			double interior = Double.parseDouble(parts[7]);
+			double hottie = Double.parseDouble(parts[9]);
+			double wtt = Double.parseDouble(parts[11]);
+			double voltage = Double.parseDouble(parts[13]);
+			int status = parts[15].equals(" on") ? 1 : 0;
+			String heatingTime = parts[17] + ":" + parts[18];
+			final Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH);
+			int day = c.get(Calendar.DAY_OF_MONTH);
+			datasource.createReport(exterior, interior, hottie, wtt, voltage,
+					status, heatingTime, year, month, day);
+			datasource.close();
+		}
+
 		SharedPreferences sharedPref = this.getSharedPreferences("syncPrefs",
 				Context.MODE_PRIVATE);
 		final SharedPreferences.Editor editor = sharedPref.edit();
@@ -233,7 +270,7 @@ public class SwipeViews extends FragmentActivity implements
 						editor.putString("led", args[0]);
 						editor.commit();
 						return 9;
-					
+
 					case 10:
 						editor.putInt("outputType1", Integer.parseInt(args[0]));
 						editor.putInt("outputType2", Integer.parseInt(args[1]));
@@ -243,7 +280,7 @@ public class SwipeViews extends FragmentActivity implements
 						editor.putInt("outputType6", Integer.parseInt(args[5]));
 						editor.commit();
 						return 10;
-					}	
+					}
 					return 0;
 				}
 			}).start();

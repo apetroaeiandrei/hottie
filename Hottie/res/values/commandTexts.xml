@@ -46,4 +46,12 @@
         <item>T 90S</item>
         <item>TT 98</item>
     </string-array>
+     <!-- Please don't change the order of the following array -->
+    <string-array name="graph_series_array">
+        <item>Exterior Temp</item>
+        <item>Interior Temp</item>
+        <item>Hottie Temp</item>
+        <item>WTT Temp</item>
+        <item>Voltage</item>
+    </string-array>
 </resources>

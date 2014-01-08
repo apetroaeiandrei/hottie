@@ -24,4 +24,5 @@
     <string name="outputOnCommand">%1$s on</string>
     <string name="outputOffCommand">%1$s off</string>
     <string name="saveAllSettingsCommand">SYNC:%1$s,%2$S,%3$S,%4$s,%5$s</string>
+    <string name="statusReportResponse">Status report:</string>
 </resources>

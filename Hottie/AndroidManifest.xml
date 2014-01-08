@@ -9,6 +9,7 @@
         android:targetSdkVersion="18" />
 
     <application
+        android:hardwareAccelerated="false"
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@drawable/ic_launcher"
@@ -93,6 +94,21 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="olectronix.hottie.config.ConfigOutputsActivity" />
+        </activity>
+
+        <service
+            android:name="olectronix.hottie.HottieSmsService"
+            android:icon="@drawable/ic_action_mail"
+            android:label="@string/service_name" >
+        </service>
+
+        <activity
+            android:name="olectronix.hottie.ReportGraphActivity"
+            android:label="@string/title_activity_report_graph"
+            android:parentActivityName="olectronix.hottie.SwipeViews" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="olectronix.hottie.SwipeViews" />
         </activity>
     </application>
 

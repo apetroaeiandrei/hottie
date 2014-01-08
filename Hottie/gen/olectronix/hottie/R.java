@@ -11,11 +11,14 @@ public final class R {
     public static final class array {
         /**  Please don't change the order of the following array 
          */
+        public static final int graph_series_array=0x7f080001;
+        /**  Please don't change the order of the following array 
+         */
         public static final int heater_types_array=0x7f080000;
-        public static final int pref_example_list_titles=0x7f080001;
-        public static final int pref_example_list_values=0x7f080002;
-        public static final int pref_sync_frequency_titles=0x7f080003;
-        public static final int pref_sync_frequency_values=0x7f080004;
+        public static final int pref_example_list_titles=0x7f080002;
+        public static final int pref_example_list_values=0x7f080003;
+        public static final int pref_sync_frequency_titles=0x7f080004;
+        public static final int pref_sync_frequency_values=0x7f080005;
     }
     public static final class attr {
         /** 
@@ -221,6 +224,7 @@ containing a value of this type.
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
+ Default screen margins, per the Android Design guidelines. 
 
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
@@ -231,31 +235,40 @@ containing a value of this type.
         /**  The default gap between components in a layout. 
          */
         public static final int default_gap=0x7f060000;
+        public static final int domain_label_font_size=0x7f060005;
+        public static final int domain_tick_label_font_size=0x7f060008;
+        public static final int legend_text_font_size=0x7f060009;
+        public static final int pie_segment_label_font_size=0x7f060003;
+        public static final int range_label_font_size=0x7f060006;
+        public static final int range_tick_label_font_size=0x7f060007;
+        public static final int title_font_size=0x7f060004;
     }
     public static final class drawable {
-        public static final int ic_action_refresh=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int ic_action_mail=0x7f020000;
+        public static final int ic_action_refresh=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f050047;
-        public static final int action_sync=0x7f050048;
+        public static final int action_settings=0x7f05004a;
+        public static final int action_sync=0x7f05004b;
         public static final int alignBounds=0x7f050002;
         public static final int alignMargins=0x7f050003;
         public static final int bottom=0x7f050005;
         public static final int button_heaterign_save=0x7f05001c;
-        public static final int button_set=0x7f050024;
+        public static final int button_set=0x7f050026;
         public static final int center=0x7f05000c;
         public static final int center_horizontal=0x7f05000a;
         public static final int center_vertical=0x7f050008;
         public static final int clip_horizontal=0x7f05000f;
         public static final int clip_vertical=0x7f05000e;
-        public static final int config_line_textView=0x7f050020;
+        public static final int config_line_textView=0x7f050022;
         public static final int config_list_view=0x7f050012;
         public static final int end=0x7f050011;
         public static final int fill=0x7f05000d;
         public static final int fill_horizontal=0x7f05000b;
         public static final int fill_vertical=0x7f050009;
         public static final int fragment_container=0x7f05001e;
+        public static final int graph_serie_spinner=0x7f05001f;
         public static final int heater_mode_note=0x7f050015;
         public static final int heater_type_spinner=0x7f05001d;
         public static final int heaterign_high_treshold=0x7f05001a;
@@ -267,47 +280,49 @@ containing a value of this type.
         public static final int heaterign_temp_tresholds_text=0x7f050018;
         public static final int horizontal=0x7f050000;
         public static final int left=0x7f050006;
-        public static final int off_button=0x7f050027;
-        public static final int on_button=0x7f050026;
-        public static final int on_off_layout=0x7f050025;
-        public static final int output_config_button=0x7f050045;
-        public static final int output_fragment_container=0x7f050046;
-        public static final int output_fragment_text_view1=0x7f05002a;
-        public static final int output_grid_layout=0x7f050029;
-        public static final int output_indep_check_box=0x7f05002c;
-        public static final int output_max_intensity_indicator=0x7f05003b;
-        public static final int output_max_intensity_seek=0x7f050034;
-        public static final int output_max_time_indicator=0x7f050036;
-        public static final int output_max_time_seek=0x7f05002f;
-        public static final int output_min_intensity_indicator=0x7f05003c;
-        public static final int output_min_intensity_seek=0x7f050035;
-        public static final int output_mode_spinner=0x7f05002d;
-        public static final int output_name_edit_text=0x7f05002b;
-        public static final int output_name_text_view=0x7f050042;
-        public static final int output_off_button=0x7f050044;
-        public static final int output_off_current_indicator=0x7f05003a;
-        public static final int output_off_current_seek=0x7f050033;
-        public static final int output_off_temp_indicator=0x7f050038;
-        public static final int output_off_temp_seek=0x7f050031;
-        public static final int output_off_voltage_indicator=0x7f050039;
-        public static final int output_off_voltage_seek=0x7f050032;
-        public static final int output_on_button=0x7f050043;
-        public static final int output_on_temp_indicator=0x7f050037;
-        public static final int output_on_temp_seek=0x7f050030;
-        public static final int output_save_button=0x7f05003d;
-        public static final int output_sensor_spinner=0x7f05002e;
+        public static final int mySimpleXYPlot=0x7f05002b;
+        public static final int off_button=0x7f050029;
+        public static final int on_button=0x7f050028;
+        public static final int on_off_layout=0x7f050027;
+        public static final int output_config_button=0x7f050048;
+        public static final int output_fragment_container=0x7f050049;
+        public static final int output_fragment_text_view1=0x7f05002d;
+        public static final int output_grid_layout=0x7f05002c;
+        public static final int output_indep_check_box=0x7f05002f;
+        public static final int output_max_intensity_indicator=0x7f05003e;
+        public static final int output_max_intensity_seek=0x7f050037;
+        public static final int output_max_time_indicator=0x7f050039;
+        public static final int output_max_time_seek=0x7f050032;
+        public static final int output_min_intensity_indicator=0x7f05003f;
+        public static final int output_min_intensity_seek=0x7f050038;
+        public static final int output_mode_spinner=0x7f050030;
+        public static final int output_name_edit_text=0x7f05002e;
+        public static final int output_name_text_view=0x7f050045;
+        public static final int output_off_button=0x7f050047;
+        public static final int output_off_current_indicator=0x7f05003d;
+        public static final int output_off_current_seek=0x7f050036;
+        public static final int output_off_temp_indicator=0x7f05003b;
+        public static final int output_off_temp_seek=0x7f050034;
+        public static final int output_off_voltage_indicator=0x7f05003c;
+        public static final int output_off_voltage_seek=0x7f050035;
+        public static final int output_on_button=0x7f050046;
+        public static final int output_on_temp_indicator=0x7f05003a;
+        public static final int output_on_temp_seek=0x7f050033;
+        public static final int output_save_button=0x7f050040;
+        public static final int output_sensor_spinner=0x7f050031;
         public static final int outputs_config_list_view=0x7f050013;
-        public static final int pager=0x7f05001f;
-        public static final int registered_number1=0x7f05003e;
-        public static final int registered_number2=0x7f05003f;
-        public static final int registered_number3=0x7f050040;
-        public static final int report_button=0x7f050028;
+        public static final int pager=0x7f050021;
+        public static final int registered_number1=0x7f050041;
+        public static final int registered_number2=0x7f050042;
+        public static final int registered_number3=0x7f050043;
+        public static final int report_button=0x7f05002a;
+        public static final int report_graph_big=0x7f050020;
         public static final int right=0x7f050007;
-        public static final int save_phone_numbers=0x7f050041;
-        public static final int seek_bar1=0x7f050022;
-        public static final int seek_bar_value_textView=0x7f050023;
+        public static final int save_phone_numbers=0x7f050044;
+        public static final int seek_bar1=0x7f050024;
+        public static final int seek_bar_value_textView=0x7f050025;
         public static final int start=0x7f050010;
-        public static final int switch1=0x7f050021;
+        public static final int switch1=0x7f050023;
         public static final int top=0x7f050004;
         public static final int vertical=0x7f050001;
     }
@@ -317,13 +332,14 @@ containing a value of this type.
         public static final int activity_heater_ignition=0x7f030002;
         public static final int activity_heater_type=0x7f030003;
         public static final int activity_register_phone=0x7f030004;
-        public static final int activity_swipe_views=0x7f030005;
-        public static final int config_row_template=0x7f030006;
-        public static final int fragment_basic_tab=0x7f030007;
-        public static final int fragment_config_output=0x7f030008;
-        public static final int fragment_register_phone=0x7f030009;
-        public static final int heaterign_mode_spinner_layout=0x7f03000a;
-        public static final int output_setup_row_template=0x7f03000b;
+        public static final int activity_report_graph=0x7f030005;
+        public static final int activity_swipe_views=0x7f030006;
+        public static final int config_row_template=0x7f030007;
+        public static final int fragment_basic_tab=0x7f030008;
+        public static final int fragment_config_output=0x7f030009;
+        public static final int fragment_register_phone=0x7f03000a;
+        public static final int heaterign_mode_spinner_layout=0x7f03000b;
+        public static final int output_setup_row_template=0x7f03000c;
     }
     public static final class menu {
         public static final int config=0x7f0a0000;
@@ -332,27 +348,31 @@ containing a value of this type.
         public static final int heater_ignition=0x7f0a0003;
         public static final int heater_type=0x7f0a0004;
         public static final int register_phone=0x7f0a0005;
-        public static final int start_screen=0x7f0a0006;
-        public static final int swipe_views=0x7f0a0007;
+        public static final int report_graph=0x7f0a0006;
+        public static final int start_screen=0x7f0a0007;
+        public static final int swipe_views=0x7f0a0008;
     }
     public static final class string {
-        public static final int action_settings=0x7f070035;
-        public static final int action_sync=0x7f070036;
-        public static final int app_name=0x7f070034;
-        public static final int button_advanced=0x7f070043;
-        public static final int button_config=0x7f070041;
-        public static final int button_config_output=0x7f070042;
-        public static final int button_next=0x7f070045;
-        public static final int button_off=0x7f07003f;
-        public static final int button_on=0x7f07003e;
-        public static final int button_on_off=0x7f070046;
-        public static final int button_report=0x7f070040;
-        public static final int button_save_phone_numbers=0x7f070044;
-        public static final int button_save_settings=0x7f070048;
-        public static final int button_set=0x7f070047;
+        public static final int action_settings=0x7f070036;
+        public static final int action_sync=0x7f070037;
+        public static final int app_name=0x7f070035;
+        public static final int button_advanced=0x7f070044;
+        public static final int button_config=0x7f070042;
+        public static final int button_config_output=0x7f070043;
+        public static final int button_next=0x7f070046;
+        public static final int button_off=0x7f070040;
+        public static final int button_on=0x7f07003f;
+        public static final int button_on_off=0x7f070047;
+        public static final int button_report=0x7f070041;
+        public static final int button_save_phone_numbers=0x7f070045;
+        public static final int button_save_settings=0x7f070049;
+        public static final int button_set=0x7f070048;
         public static final int default_output_5=0x7f07001f;
         public static final int default_output_6=0x7f070020;
-        public static final int flood_control_message=0x7f07004e;
+        public static final int flood_control_message=0x7f07004f;
+        public static final int graph_duration_start=0x7f070063;
+        public static final int graph_duration_stop=0x7f070064;
+        public static final int graph_serie=0x7f070062;
         public static final int heater_ignition_mode_text=0x7f070011;
         public static final int heaterignModeIndependentText=0x7f07000f;
         public static final int heaterignModeOFFText=0x7f07000d;
@@ -365,13 +385,13 @@ containing a value of this type.
         public static final int heaterign_sensor_selection_text=0x7f070012;
         public static final int heaterign_temp_tresholds_note=0x7f07001b;
         public static final int heaterign_temp_tresholds_text=0x7f07001c;
-        public static final int hello_world=0x7f070038;
+        public static final int hello_world=0x7f070039;
         public static final int high_treshold_hint=0x7f07001d;
         /**  Strings related to Settings 
          */
-        public static final int hottie_credit_settings=0x7f070060;
-        public static final int hottie_credit_settings_description=0x7f070061;
-        public static final int hottie_phone_number=0x7f070062;
+        public static final int hottie_credit_settings=0x7f070066;
+        public static final int hottie_credit_settings_description=0x7f070067;
+        public static final int hottie_phone_number=0x7f070068;
         public static final int low_treshold_hint=0x7f07001e;
         public static final int numberCommand=0x7f070029;
         public static final int numberResponse=0x7f07002a;
@@ -379,57 +399,58 @@ containing a value of this type.
         public static final int onCommand=0x7f070022;
         public static final int outputOffCommand=0x7f070032;
         public static final int outputOnCommand=0x7f070031;
-        public static final int output_indep=0x7f070052;
-        public static final int output_max_intensity=0x7f070058;
-        public static final int output_max_time=0x7f070053;
-        public static final int output_min_intensity=0x7f070059;
-        public static final int output_mode=0x7f07005a;
-        public static final int output_mode_auto=0x7f07005e;
-        public static final int output_mode_never=0x7f07005c;
-        public static final int output_mode_sms_request=0x7f07005d;
-        public static final int output_name=0x7f070051;
-        public static final int output_off_current=0x7f070057;
-        public static final int output_off_temp=0x7f070055;
-        public static final int output_off_voltage=0x7f070056;
-        public static final int output_on_temp=0x7f070054;
-        public static final int output_sensor=0x7f07005b;
-        public static final int pin=0x7f07003d;
+        public static final int output_indep=0x7f070053;
+        public static final int output_max_intensity=0x7f070059;
+        public static final int output_max_time=0x7f070054;
+        public static final int output_min_intensity=0x7f07005a;
+        public static final int output_mode=0x7f07005b;
+        public static final int output_mode_auto=0x7f07005f;
+        public static final int output_mode_never=0x7f07005d;
+        public static final int output_mode_sms_request=0x7f07005e;
+        public static final int output_name=0x7f070052;
+        public static final int output_off_current=0x7f070058;
+        public static final int output_off_temp=0x7f070056;
+        public static final int output_off_voltage=0x7f070057;
+        public static final int output_on_temp=0x7f070055;
+        public static final int output_sensor=0x7f07005c;
+        public static final int pin=0x7f07003e;
         public static final int pinCommand=0x7f070026;
         public static final int pinResponseBad=0x7f070028;
         public static final int pinResponseOK=0x7f070027;
-        public static final int pref_default_display_name=0x7f070067;
-        public static final int pref_description_social_recommendations=0x7f070065;
+        public static final int pref_default_display_name=0x7f07006d;
+        public static final int pref_description_social_recommendations=0x7f07006b;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f070069;
+        public static final int pref_header_data_sync=0x7f07006f;
         /**  Example General settings 
          */
-        public static final int pref_header_general=0x7f070063;
+        public static final int pref_header_general=0x7f070069;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f07006c;
-        public static final int pref_ringtone_silent=0x7f07006f;
-        public static final int pref_title_add_friends_to_messages=0x7f070068;
-        public static final int pref_title_display_name=0x7f070066;
-        public static final int pref_title_new_message_notifications=0x7f07006d;
-        public static final int pref_title_ringtone=0x7f07006e;
-        public static final int pref_title_social_recommendations=0x7f070064;
-        public static final int pref_title_sync_frequency=0x7f07006a;
-        public static final int pref_title_system_sync_settings=0x7f07006b;
-        public static final int pref_title_vibrate=0x7f070070;
-        public static final int preference_file_key=0x7f070037;
+        public static final int pref_header_notifications=0x7f070072;
+        public static final int pref_ringtone_silent=0x7f070075;
+        public static final int pref_title_add_friends_to_messages=0x7f07006e;
+        public static final int pref_title_display_name=0x7f07006c;
+        public static final int pref_title_new_message_notifications=0x7f070073;
+        public static final int pref_title_ringtone=0x7f070074;
+        public static final int pref_title_social_recommendations=0x7f07006a;
+        public static final int pref_title_sync_frequency=0x7f070070;
+        public static final int pref_title_system_sync_settings=0x7f070071;
+        public static final int pref_title_vibrate=0x7f070076;
+        public static final int preference_file_key=0x7f070038;
         public static final int registerPhoneCommand=0x7f07002b;
         public static final int registerPhoneText=0x7f070000;
         public static final int reportCommand=0x7f070021;
-        public static final int request_PIN=0x7f07003b;
-        public static final int request_number=0x7f07003c;
+        public static final int request_PIN=0x7f07003c;
+        public static final int request_number=0x7f07003d;
         public static final int saveAllSettingsCommand=0x7f070033;
         public static final int saveSettingsText=0x7f07000c;
-        public static final int seconds=0x7f070049;
+        public static final int seconds=0x7f07004a;
         public static final int sensor_HOTTIE_system_temperature_sensor =0x7f070016;
         public static final int sensor_WTT_temperature_sensor=0x7f070013;
         public static final int sensor_exterior_temperature_sensor=0x7f070014;
         public static final int sensor_interior_temperature_sensor =0x7f070015;
+        public static final int service_name=0x7f070060;
         public static final int setComErrorNoteText=0x7f070008;
         public static final int setDefOnTimeText=0x7f070004;
         public static final int setDefaultCommand=0x7f07002d;
@@ -452,17 +473,19 @@ containing a value of this type.
         public static final int setTimeText=0x7f070001;
         public static final int setTypeText=0x7f07000a;
         public static final int setWttErrorNoteText=0x7f070007;
+        public static final int statusReportResponse=0x7f070034;
         public static final int syncCommand=0x7f070024;
         public static final int syncResponse=0x7f070025;
-        public static final int title_activity_config=0x7f070039;
-        public static final int title_activity_config_output_specific=0x7f070050;
-        public static final int title_activity_configure_outputs=0x7f07004c;
-        public static final int title_activity_heater_ignition=0x7f07004a;
-        public static final int title_activity_heater_type=0x7f07004b;
-        public static final int title_activity_register_phone=0x7f07003a;
-        public static final int title_activity_swipe_views=0x7f07004f;
-        public static final int title_activity_user_settings=0x7f07005f;
-        public static final int unknown_phone=0x7f07004d;
+        public static final int title_activity_config=0x7f07003a;
+        public static final int title_activity_config_output_specific=0x7f070051;
+        public static final int title_activity_configure_outputs=0x7f07004d;
+        public static final int title_activity_heater_ignition=0x7f07004b;
+        public static final int title_activity_heater_type=0x7f07004c;
+        public static final int title_activity_register_phone=0x7f07003b;
+        public static final int title_activity_report_graph=0x7f070061;
+        public static final int title_activity_swipe_views=0x7f070050;
+        public static final int title_activity_user_settings=0x7f070065;
+        public static final int unknown_phone=0x7f07004e;
     }
     public static final class style {
         /** 
@@ -493,10 +516,12 @@ containing a value of this type.
         public static final int AppTheme=0x7f090001;
     }
     public static final class xml {
-        public static final int pref_data_sync=0x7f040000;
-        public static final int pref_general=0x7f040001;
-        public static final int pref_headers=0x7f040002;
-        public static final int pref_notification=0x7f040003;
+        public static final int line_point_formatter_with_plf1=0x7f040000;
+        public static final int line_point_formatter_with_plf2=0x7f040001;
+        public static final int pref_data_sync=0x7f040002;
+        public static final int pref_general=0x7f040003;
+        public static final int pref_headers=0x7f040004;
+        public static final int pref_notification=0x7f040005;
     }
     public static final class styleable {
         /** Attributes that can be used with a GridLayout.

@@ -56,6 +56,7 @@ public class ConfigOutputFragment extends Fragment {
         
         final Bundle args = getArguments();
         nameEditText.setText(args.getString("name", "output"));
+        // Populating the spinners
         // The order of this items is important. Please don't change
         ArrayList<String> spinnerArrayList = new ArrayList<String>();
 		spinnerArrayList.add(getResources().getString(
