@@ -54,4 +54,8 @@
     <string name="alert_set_phone_number">Please set the device\'s phone number in settings menu</string>
     <string name="alert_set_pin_code">Please set the device\'s pin code in settings menu</string>
 
+    <string name="basic_tab_ext_temp">Exterior temp &#x2103; </string>
+    <string name="basic_tab_int_temp">Interior temp &#x2103; </string>
+    <string name="basic_tab_wtt_temp">Heater temp &#x2103; </string>
+
 </resources>

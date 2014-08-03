@@ -52,7 +52,7 @@ public class BasicTabFragment extends Fragment implements OnClickListener {
         on = (Button) rootView.findViewById(R.id.on_button);
         off = (Button) rootView.findViewById(R.id.off_button);
         report = (Button) rootView.findViewById(R.id.report_button);
-        plot = (XYPlot) rootView.findViewById(R.id.mySimpleXYPlot);
+       // plot = (XYPlot) rootView.findViewById(R.id.mySimpleXYPlot);
 
         // Initialize SMS handler
         smsHandler = new SMSHandler(context);
@@ -68,7 +68,7 @@ public class BasicTabFragment extends Fragment implements OnClickListener {
     public void onResume() {
         super.onResume();
         // Initializes the plot
-        initializePlot();
+        //initializePlot();
     }
 
     @Override
