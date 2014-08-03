@@ -1,120 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="olectronix.hottie"
-    android:versionCode="1"
-    android:versionName="1.0" >
+          package="olectronix.hottie"
+          android:versionCode="1"
+          android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="18" />
+            android:minSdkVersion="14"
+            android:targetSdkVersion="18"/>
 
     <application
-        android:hardwareAccelerated="false"
-        android:allowBackup="true"
-        android:debuggable="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name="olectronix.hottie.StartScreen"
-            android:label="@string/app_name" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.StartScreen" />
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            android:hardwareAccelerated="false"
+            android:allowBackup="true"
+            android:debuggable="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
 
+        <activity
+                android:name=".config.activities.RegisterPhoneActivity"
+                android:label="@string/title_activity_register_phone"
+                android:parentActivityName="olectronix.hottie.config.activities.ConfigActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="olectronix.hottie.config.activities.ConfigActivity"/>
+        </activity>
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
         <activity
-            android:name="olectronix.hottie.config.ConfigActivity"
-            android:label="@string/title_activity_config"
-            android:parentActivityName="olectronix.hottie.StartScreen" >
+                android:name=".config.activities.HeaterIgnitionActivity"
+                android:label="@string/title_activity_heater_ignition"
+                android:parentActivityName=".config.activities.ConfigActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.StartScreen" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="olectronix.hottie.config.ConfigActivity"/>
         </activity>
         <activity
-            android:name="olectronix.hottie.config.RegisterPhoneActivity"
-            android:label="@string/title_activity_register_phone"
-            android:parentActivityName="olectronix.hottie.ConfigActivity" >
+                android:name=".config.activities.HeaterTypeActivity"
+                android:label="@string/title_activity_heater_type"
+                android:parentActivityName=".config.activities.ConfigActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.ConfigActivity" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="olectronix.hottie.config.ConfigActivity"/>
         </activity>
-        <!-- <receiver android:name=".SMSReceiver"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name= -->
-        <!-- "android.provider.Telephony.SMS_RECEIVED" /> -->
-        <!-- </intent-filter> -->
-        <!-- </receiver> -->
         <activity
-            android:name="olectronix.hottie.config.HeaterIgnitionActivity"
-            android:label="@string/title_activity_heater_ignition"
-            android:parentActivityName="olectronix.hottie.config.ConfigActivity" >
+                android:name=".config.activities.ConfigOutputsActivity"
+                android:label="@string/title_activity_configure_outputs"
+                android:parentActivityName=".config.activities.ConfigActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.config.ConfigActivity" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="olectronix.hottie.config.ConfigActivity"/>
         </activity>
         <activity
-            android:name="olectronix.hottie.config.HeaterTypeActivity"
-            android:label="@string/title_activity_heater_type"
-            android:parentActivityName="olectronix.hottie.config.ConfigActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.config.ConfigActivity" />
+                android:name=".general.activities.UserSettingsActivity"
+                android:label="@string/title_activity_user_settings">
         </activity>
         <activity
-            android:name="olectronix.hottie.config.ConfigOutputsActivity"
-            android:label="@string/title_activity_configure_outputs"
-            android:parentActivityName="olectronix.hottie.config.ConfigActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.config.ConfigActivity" />
-        </activity>
-        <activity
-            android:name="olectronix.hottie.UserSettingsActivity"
-            android:label="@string/title_activity_user_settings" >
-        </activity>
-        <activity
-            android:name="olectronix.hottie.SwipeViews"
-            android:label="@string/title_activity_swipe_views" >
+                android:name=".general.activities.SwipeViews"
+                android:label="@string/title_activity_swipe_views">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="olectronix.hottie.config.ConfigOutputFragment"
-            android:label="@string/title_activity_config_output_specific"
-            android:parentActivityName="olectronix.hottie.config.ConfigOutputsActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.config.ConfigOutputsActivity" />
-        </activity>
 
-        <service
-            android:name="olectronix.hottie.HottieSmsService"
-            android:icon="@drawable/ic_action_mail"
-            android:label="@string/service_name" >
-        </service>
+
+        <!--      <service
+                  android:name="olectronix.hottie.HottieSmsService"
+                  android:icon="@drawable/ic_action_mail"
+                  android:label="@string/service_name" >
+              </service>-->
 
         <activity
-            android:name="olectronix.hottie.ReportGraphActivity"
-            android:label="@string/title_activity_report_graph"
-            android:parentActivityName="olectronix.hottie.SwipeViews" >
+                android:name=".general.activities.ReportGraphActivity"
+                android:label="@string/title_activity_report_graph"
+                android:parentActivityName=".general.activities.SwipeViews">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="olectronix.hottie.SwipeViews" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="olectronix.hottie.SwipeViews"/>
         </activity>
     </application>
 
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
 
 </manifest>

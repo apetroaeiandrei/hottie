@@ -1,7 +1,7 @@
-package olectronix.hottie.config;
+package olectronix.hottie.config.fragments;
 
 import olectronix.hottie.R;
-import olectronix.hottie.SMSHandler;
+import olectronix.hottie.general.access.SMSHandler;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class RegisterPhoneFragment extends Fragment {
-	final static String NUMBER1 = "no1";
-	final static String NUMBER2 = "no2";
-	final static String NUMBER3 = "no3";
+	public final static String NUMBER1 = "no1";
+	public final static String NUMBER2 = "no2";
+	public final static String NUMBER3 = "no3";
 	boolean no1Changed = false;
 	boolean no2Changed = false;
 	boolean no3Changed = false;
@@ -59,9 +59,10 @@ public class RegisterPhoneFragment extends Fragment {
 				R.id.registered_number2);
 		EditText editText3 = (EditText) getActivity().findViewById(
 				R.id.registered_number3);
-		editText1.setText(no1);
-		editText2.setText(no2);
-		editText3.setText(no3);
+
+        setDefaultNumber(editText1, no1);
+        setDefaultNumber(editText2, no2);
+        setDefaultNumber(editText3, no3);
 
 		editText1.addTextChangedListener(new TextWatcher() {
 			private String initialText;
@@ -193,5 +194,15 @@ public class RegisterPhoneFragment extends Fragment {
 					getResources().getString(R.string.registerPhoneCommand), 3, no);
 			smsHandler.sendSMS(command);
 		}
+        getActivity().finish();
 	}
+
+
+    private void setDefaultNumber (EditText editText, String number){
+        if (number.equals("None") || number.equals(getString(R.string.unknown_phone))) {
+            editText.setHint(number);
+        } else {
+            editText.setText(number);
+        }
+    }
 }

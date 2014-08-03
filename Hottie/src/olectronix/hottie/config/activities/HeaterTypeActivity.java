@@ -1,7 +1,7 @@
-package olectronix.hottie.config;
+package olectronix.hottie.config.activities;
 
 import olectronix.hottie.R;
-import olectronix.hottie.SMSHandler;
+import olectronix.hottie.general.access.SMSHandler;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.SharedPreferences;

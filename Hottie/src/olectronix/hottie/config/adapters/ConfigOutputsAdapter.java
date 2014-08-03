@@ -1,10 +1,10 @@
-package olectronix.hottie.config;
+package olectronix.hottie.config.adapters;
 
 import java.util.ArrayList;
 
 import olectronix.hottie.R;
-import olectronix.hottie.SMSHandler;
-import android.app.FragmentManager;
+import olectronix.hottie.config.ConfigOutputsItem;
+import olectronix.hottie.general.access.SMSHandler;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import olectronix.hottie.config.fragments.ConfigOutputFragment;
 
 public class ConfigOutputsAdapter extends BaseAdapter {
 

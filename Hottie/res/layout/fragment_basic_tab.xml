@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-<LinearLayout
-    android:id="@+id/on_off_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="fill_horizontal"
-    style =  "?android:attr/buttonBarStyle"
-    android:orientation="horizontal">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+            android:id="@+id/on_off_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            style="?android:attr/buttonBarStyle"
+            android:orientation="horizontal">
+        <Button
+                android:id="@+id/on_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:padding="3dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="@string/button_on"/>
+        <Button
+                android:id="@+id/off_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:padding="3dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="@string/button_off"/>
+    </LinearLayout>
+
     <Button
-        android:id="@+id/on_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:padding="3dp"
-        style="?android:attr/buttonBarButtonStyle"
-        android:text="@string/button_on" />
-    <Button
-        android:id="@+id/off_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:padding="3dp"
-        style="?android:attr/buttonBarButtonStyle"
-        android:text="@string/button_off" />
-</LinearLayout>
-    
-    <Button
-        android:id="@+id/report_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="3dp"
-        style="?android:attr/buttonBarButtonStyle"
-        android:text="@string/button_report" />
-    
-     <com.androidplot.xy.XYPlot
+            android:id="@+id/report_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="3dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/button_report"/>
+
+    <com.androidplot.xy.XYPlot
             android:id="@+id/mySimpleXYPlot"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            androidPlot.title="A Simple XY Plot"
+            androidPlot.title="Reports Graph"
             androidPlot.domainLabel="Domain"
             androidPlot.rangeLabel="Range"
             androidPlot.titleWidget.labelPaint.textSize="@dimen/title_font_size"
@@ -63,5 +63,21 @@
             androidPlot.legendWidget.iconSizeMetrics.widthMetric.value="15dp"
             androidPlot.legendWidget.heightMetric.value="25dp"
             androidPlot.legendWidget.positionMetrics.anchor="right_bottom"
-            androidPlot.graphWidget.gridLinePaint.color="#000000"/>
+            androidPlot.graphWidget.gridLinePaint.color="#000000"
+            android:visibility="gone"/>
+    <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progress="20"/>
+    <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="50"/>
+    <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="90"/>
+
 </LinearLayout>

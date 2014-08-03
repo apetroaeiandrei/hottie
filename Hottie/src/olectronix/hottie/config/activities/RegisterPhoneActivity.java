@@ -1,9 +1,9 @@
-package olectronix.hottie.config;
+package olectronix.hottie.config.activities;
 
 import olectronix.hottie.R;
-import olectronix.hottie.SMSHandler;
-import olectronix.hottie.SMSReceiver;
-import olectronix.hottie.UserSettingsActivity;
+import olectronix.hottie.general.access.SMSHandler;
+import olectronix.hottie.general.access.SMSReceiver;
+import olectronix.hottie.general.activities.UserSettingsActivity;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -18,9 +18,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import olectronix.hottie.general.access.OnSmsReceivedListener;
+import olectronix.hottie.config.fragments.RegisterPhoneFragment;
+import olectronix.hottie.general.utils.Constants;
 
 public class RegisterPhoneActivity extends FragmentActivity implements
-		OnSmsReceivedListener {
+        OnSmsReceivedListener {
 
 	SMSHandler smsHandler = new SMSHandler(this);
 	SMSReceiver smsReceiver =new SMSReceiver();
@@ -37,8 +40,8 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 		syncPref = this.getSharedPreferences("syncPrefs",Context.MODE_PRIVATE);
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         syncOK = syncPref.getBoolean("syncOK", false);
-        Boolean ableToRespond = sharedPref.getBoolean("hottie_credit_checkbox", false);
-        pin = sharedPref.getString("hottiePin", "0000");
+        Boolean ableToRespond = sharedPref.getBoolean(Constants.SETTING_FEEDBACK_CHECKBOX, false);
+        pin = sharedPref.getString(Constants.SETTING_REMOTE_PIN_CODE, Constants.DEFAULT_PIN);
 		IntentFilter filter = new IntentFilter();
 		  filter.addAction("android.provider.Telephony.SMS_RECEIVED");
 		registerReceiver(smsReceiver, filter);
@@ -57,7 +60,6 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.fragment_container, newFragment).commit();
 		}
-		
 	}
 
 	@Override
@@ -168,7 +170,7 @@ public class RegisterPhoneActivity extends FragmentActivity implements
 
 			View container = findViewById(R.id.fragment_container);
 			if (container != null) {
-				showNumberFragment(number1, number2, number3);				
+				showNumberFragment(number1, number2, number3);
 			}
 		}
 	}

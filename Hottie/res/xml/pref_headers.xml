@@ -3,13 +3,10 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="olectronix.hottie.UserSettingsActivity$GeneralPreferenceFragment"
+        android:fragment="olectronix.hottie.general.activities.UserSettingsActivity$GeneralPreferenceFragment"
         android:title="@string/pref_header_general" />
-    <header
-        android:fragment="olectronix.hottie.UserSettingsActivity$NotificationPreferenceFragment"
-        android:title="@string/pref_header_notifications" />
-    <header
-        android:fragment="olectronix.hottie.UserSettingsActivity$DataSyncPreferenceFragment"
-        android:title="@string/pref_header_data_sync" />
+<!--    <header
+        android:fragment="olectronix.hottie.general.activities.UserSettingsActivity$DataSyncPreferenceFragment"
+        android:title="@string/pref_header_data_sync" />-->
 
 </preference-headers>

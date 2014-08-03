@@ -1,11 +1,12 @@
-package olectronix.hottie.config;
+package olectronix.hottie.config.adapters;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import olectronix.hottie.R;
-import olectronix.hottie.SMSHandler;
+import olectronix.hottie.config.ConfigMenuItem;
+import olectronix.hottie.general.access.SMSHandler;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import olectronix.hottie.general.utils.Constants;
 
 public class ConfigMenuAdapter extends BaseAdapter {
 
@@ -31,7 +33,7 @@ public class ConfigMenuAdapter extends BaseAdapter {
 		currentContext = context;
 		menusArrayList = menus;
 		mInflater = LayoutInflater.from(context);
-		syncPref = currentContext.getSharedPreferences("syncPrefs",
+		syncPref = currentContext.getSharedPreferences(Constants.SYNC_PREFERENCES_KEY,
 				Context.MODE_PRIVATE);
 	}
 
@@ -214,12 +216,10 @@ public class ConfigMenuAdapter extends BaseAdapter {
 
 						@Override
 						public void onStartTrackingTouch(SeekBar arg0) {
-							// TODO Auto-generated method stub
 						}
 
 						@Override
 						public void onStopTrackingTouch(SeekBar arg0) {
-							// TODO Auto-generated method stub
 						}
 					});
 
@@ -238,16 +238,16 @@ public class ConfigMenuAdapter extends BaseAdapter {
 		holder.seek_bar_valueTextView.setVisibility(menusArrayList
 				.get(position).getSeek_bar_visibility());
 
-		Boolean wttErr = (syncPref.getString("wtterr", "0").equals("1")) ? true
+		Boolean wttErr = (syncPref.getString(Constants.SYNC_PREFS_ERROR_WTT, "0").equals("1")) ? true
 				: false;
-		Boolean comErr = (syncPref.getString("comerr", "0").equals("1")) ? true
+		Boolean comErr = (syncPref.getString(Constants.SYNC_PREFS_ERROR_COM, "0").equals("1")) ? true
 				: false;
-		Boolean led = (syncPref.getString("led", "0").equals("1")) ? true
+		Boolean led = (syncPref.getString(Constants.SYNC_PREFS_LED_STATUS, "0").equals("1")) ? true
 				: false;
-		int ignTime = Integer.parseInt(syncPref.getString("ignTime", "0"));
-		int lightTime = Integer.parseInt(syncPref.getString("lightTime", "0"));
+		int ignTime = Integer.parseInt(syncPref.getString(Constants.SYNC_PREFS_IGNITION_TIME, "0"));
+		int lightTime = Integer.parseInt(syncPref.getString(Constants.SYNC_PREFS_LIGHT_TIME, "0"));
 		for (ConfigMenuItem item : menusArrayList) {
-			String itemText = item.getText().toString();
+			String itemText = item.getText();
 			String holderText = holder.textView.getText().toString();
 
 			if (itemText.equals(holderText)) {

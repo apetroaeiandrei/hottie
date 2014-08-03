@@ -1,4 +1,4 @@
-package olectronix.hottie.config;
+package olectronix.hottie.config.activities;
 
 import java.util.ArrayList;
 
@@ -14,6 +14,8 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import olectronix.hottie.config.adapters.ConfigOutputsAdapter;
+import olectronix.hottie.config.ConfigOutputsItem;
 
 public class ConfigOutputsActivity extends FragmentActivity {
 	private ListView lv;
@@ -28,8 +30,7 @@ public class ConfigOutputsActivity extends FragmentActivity {
 		syncPref = getSharedPreferences("syncPrefs", Context.MODE_PRIVATE);
 		lv = (ListView) findViewById(R.id.outputs_config_list_view);
 
-		ArrayList<ConfigOutputsItem> your_array_list = new ArrayList<ConfigOutputsItem>();
-		your_array_list = populateConfigMenu();
+		ArrayList<ConfigOutputsItem> your_array_list = populateConfigMenu();
 		lv.setAdapter(new ConfigOutputsAdapter(this, your_array_list));
 	}
 

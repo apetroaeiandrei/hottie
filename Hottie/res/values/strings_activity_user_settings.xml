@@ -3,8 +3,8 @@
     <string name="title_activity_user_settings">Settings</string>
 
     <!-- Strings related to Settings -->
-    <string name="hottie_credit_settings">Device able to respond</string>
-    <string name="hottie_credit_settings_description">Check this if Hotties SIM is able to send SMS Recommended for improved user experience</string>
+    <string name="hottie_credit_settings">Enable feedback</string>
+    <string name="hottie_credit_settings_description">Check this if Hotties SIM is able to send SMS. Recommended for improved user experience</string>
     <string name="hottie_phone_number">Hottie phone number</string>
 
     <!-- Example General settings -->
